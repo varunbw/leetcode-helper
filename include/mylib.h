@@ -5,8 +5,10 @@
 using namespace std;
 
 // -- Input Parsing
-vector<int> argsParseInt(int, char**, int);
-vector<string> argsParseString(int, char**, int);
+vector<int> argsParseInt_1D(int, char**, int);
+vector<vector<int>> argsParseInt_2D(int, char**, int);
+
+vector<string> argsParseString_1D(int, char**, int);
 
 
 // -- Vector

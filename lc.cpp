@@ -15,11 +15,15 @@ int main(int argc, char** argv) {
     cout << "\n";
     Solution sol;
 
-    // vector<int> vec = argsParseInt(argc, argv, 0);
+    // vector<int> vec = argsParseInt_1D(argc, argv, 1);
+    // print1DVector(vec);
 
-    // vector<string> vec = argsParseString(argc, argv, 0);
-    // vector<TreeNode*> nodes;
-    // TreeNode* root = createBinaryTree(vec, nodes);
+    // vector<vector<int>> vec = argsParseInt_2D(argc, argv, 0);
+    // print2DVector(vec);
+    
+    vector<string> vec = argsParseString_1D(argc, argv, 0);
+    vector<TreeNode*> nodes;
+    TreeNode* root = createBinaryTree(vec, nodes);
     
 
     
@@ -31,9 +35,7 @@ int main(int argc, char** argv) {
     
     
     
-    
-    
-    // deleteNodes(nodes);
+    deleteNodes(nodes);
     cout << "\n";
     return 0;
 }
