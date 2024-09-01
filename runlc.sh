@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# Check if at least two parameters are passed
+# Check if at least one parameter is passed
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <mode>"
+    echo "Usage: $0 <mode> [args...]"
     echo "Mode:"
-    echo "  0 - Compile with -g"
-    echo "  1 - Compile with -g and execute"
+    echo "  0 - Compile with debug info"
+    echo "  1 - Compile with debug info and execute with parameters"
+    # echo "  2 - Compile library and program, exec with params"
     echo ""
     exit 1
 fi  
@@ -15,7 +16,7 @@ OUTPUT_FILE="lc"
 MODE=$1
 
 # Base compile command
-COMPILE_CMD="g++ -g $SOURCE_FILE -o $OUTPUT_FILE -Llib -lmylib -fsanitize=address"
+COMPILE_CMD="g++ -g $SOURCE_FILE -o $OUTPUT_FILE -Llib -lmylib -std=c++17 -fsanitize=address"
 
 # Compile the source file
 echo "Compiling with command: $COMPILE_CMD"
@@ -28,13 +29,17 @@ if [ $? -ne 0 ]; then
 fi
 
 if [ $? -eq 0 ]; then
-    echo "Compilation successfull"
+    echo "Compilation successful"
     echo ""
 fi
 
-# Execute the file if mode is 1
+
+# Shift the mode parameter to access additional parameters
+shift
+
+# Execute the file if mode is 1, passing all remaining arguments
 if [ "$MODE" -eq 1 ]; then
-    echo "Executing $OUTPUT_FILE"
-    echo ""
-    ./$OUTPUT_FILE
+    echo "Executing with parameters: $@"
+    echo "---------------------------------------------------------------------------------------"
+    ./$OUTPUT_FILE "$@"
 fi

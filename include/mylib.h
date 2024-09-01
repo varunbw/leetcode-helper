@@ -5,29 +5,34 @@
 using namespace std;
 
 // -- Input Parsing
-vector<int> argsParseInt_1D(int, char**, int);
-vector<vector<int>> argsParseInt_2D(int, char**, int);
+vector<int> ArgsParseInt_1D(int, char**, int);
+vector<vector<int>> ArgsParseInt_2D(int, char**, int);
+vector<string> ArgsParseString_1D(int, char**, int);
 
-vector<string> argsParseString_1D(int, char**, int);
 
 
-// -- Vector
+// -- Vector Printing
 template <typename T>
-void print1DVector(vector<T> vec) {
+void Print1DVector(vector<T> vec) {
     for (auto ele : vec)
         cout << ele << "  ";
     cout << "\n";
+
+    return;
 }
 
 template <typename T>
-void print2DVector(vector<vector<T>> vec) {
+void Print2DVector(vector<vector<T>> vec) {
     for (int i = 0; i < vec.size(); i++) {
         for (int j = 0; j < vec[i].size(); j++) {
             cout << vec[i][j] << " ";
         }
         cout << "\n";
     }
+
+    return;
 }
+
 
 
 // -- Linked List
@@ -40,8 +45,10 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-ListNode* createLinkedList();
-void displayLinkedList(ListNode*);
+inline vector<ListNode*> allocatedListNodes;
+
+ListNode* CreateLinkedList();
+void DisplayLinkedList(ListNode*);
 
 
 
@@ -55,7 +62,34 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {};
 };
 
-TreeNode* createBinaryTree(vector<string>, vector<TreeNode*>&);
-void deleteNodes(vector<TreeNode*>&);
+inline vector<TreeNode*> allocatedTreeNodes;
+
+TreeNode* CreateBinaryTree(vector<string>&);
+void BT_PreorderTraversal(TreeNode*);
+
+
+
+// -- Graph
+struct GraphNode {
+    int val;
+    vector<GraphNode*> neighbors;
+
+    GraphNode() : val(0), neighbors(vector<GraphNode*>()) {}
+    GraphNode(int _val) : val(_val), neighbors(vector<GraphNode*>()) {}
+    GraphNode(int _val, vector<GraphNode*> _neighbours) : val(_val), neighbors(_neighbours) {}
+};
+
+inline vector<GraphNode*> allocatedGraphNodes;
+
+GraphNode* CreateGraph(vector<vector<int>>&);
+void G_DFS(GraphNode* root);
+void G_DFS(GraphNode* node, set<GraphNode*>&);
+
+
+
+// -- General
+void DeleteAllocatedNodes();
+
+
 
 #endif
