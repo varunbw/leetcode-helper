@@ -5,6 +5,82 @@ using namespace std;
 
 // -- Binary Tree
 /*
+    Leetcode uses BFS to serialize binary trees into a string.
+    ex:   1
+         / \
+        2   3
+           / \
+          4   5
+    
+    gets serialized into "[1,2,3,null,null,4,5]"
+
+    I/P: A vector representation of the serialized string
+    O/P: Root node of the tree
+*/
+TreeNode* CreateBinaryTree(const vector<string>& nodes) {
+
+    if (nodes.empty() || nodes[0] == "null") {
+        cerr << "Tree empty" << endl;
+        return nullptr;
+    }
+
+    // Create the root node
+    TreeNode* root = new TreeNode(stoi(nodes[0]));
+    allocatedTreeNodes.push_back(root);
+
+    // Use a queue to build the tree level by level
+    queue<TreeNode*> q;
+    q.push(root);
+
+    int i = 1;
+    while (q.empty() == false && i < nodes.size()) {
+
+        TreeNode* curr = q.front();
+        q.pop();
+
+        // Process the left child
+        if (nodes[i] != "null") {
+            TreeNode* leftNode = new TreeNode(stoi(nodes[i]));
+            allocatedTreeNodes.push_back(leftNode);
+            curr->left = leftNode;
+            q.push(leftNode);
+        }
+        i++;
+
+        // Process the right child
+        if (i < nodes.size() && nodes[i] != "null") {
+            TreeNode* rightNode = new TreeNode(stoi(nodes[i]));
+            allocatedTreeNodes.push_back(rightNode);
+            curr->right = rightNode;
+            q.push(rightNode);
+        }
+        i++;
+    }
+
+    return root;
+}
+
+
+// Basic DFS Preorder Traversal
+// I/P: Root of tree
+void BT_PreorderTraversal(const TreeNode* root) {
+    
+    if (root == nullptr) return;
+    
+    cout << root->val << ", ";
+    BT_PreorderTraversal(root->left);
+    BT_PreorderTraversal(root->right);
+
+    return;
+}
+
+
+
+// ! Not used
+// This is how a I thought a BT would be represented
+// However, LeetCode uses a different codec, that uses BFS
+// The above function works with the LC serialized format
+/*
     Create a binary tree with the given vector
     Follows the format
         Left child pos  = (2 * node pos) + 1
@@ -21,6 +97,7 @@ using namespace std;
          "null" or "n" signifies no node at corresponding location
     O/P: Pointer to root node
 */
+/*
 TreeNode* CreateBinaryTree(vector<string>& inp) {
 
     vector<TreeNode*> nodes;
@@ -58,15 +135,4 @@ TreeNode* CreateBinaryTree(vector<string>& inp) {
 
     return nodes[0];
 }
-
-
-void BT_PreorderTraversal(TreeNode* root) {
-    
-    if (root == nullptr) return;
-    
-    cout << root->val << ", ";
-    BT_PreorderTraversal(root->left);
-    BT_PreorderTraversal(root->right);
-
-    return;
-}
+*/

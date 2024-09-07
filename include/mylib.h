@@ -4,10 +4,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+
 // -- Input Parsing
-vector<int> ArgsParseInt_1D(int, char**, int);
-vector<vector<int>> ArgsParseInt_2D(int, char**, int);
-vector<string> ArgsParseString_1D(int, char**, int);
+vector<int> ArgsParseInt_1D(const int, const char**, const int);
+vector<vector<int>> ArgsParseInt_2D(const int, const char**, const int);
+vector<string> ArgsParseString_1D(const int, const char**, const int);
 
 
 
@@ -48,7 +50,7 @@ struct ListNode {
 inline vector<ListNode*> allocatedListNodes;
 
 ListNode* CreateLinkedList();
-void DisplayLinkedList(ListNode*);
+void DisplayLinkedList(const ListNode*);
 
 
 
@@ -64,8 +66,8 @@ struct TreeNode {
 
 inline vector<TreeNode*> allocatedTreeNodes;
 
-TreeNode* CreateBinaryTree(vector<string>&);
-void BT_PreorderTraversal(TreeNode*);
+TreeNode* CreateBinaryTree(const vector<string>&);
+void BT_PreorderTraversal(const TreeNode*);
 
 
 
@@ -81,9 +83,9 @@ struct GraphNode {
 
 inline vector<GraphNode*> allocatedGraphNodes;
 
-GraphNode* CreateGraph(vector<vector<int>>&);
-void G_DFS(GraphNode* root);
-void G_DFS(GraphNode* node, set<GraphNode*>&);
+GraphNode* CreateGraph(const vector<vector<int>>&);
+void G_DFS(const GraphNode*);
+void G_DFS(GraphNode*, set<const GraphNode*>&);
 
 
 

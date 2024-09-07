@@ -10,7 +10,7 @@ using namespace std;
     I/P: The edge list :)
     O/P: Root node of graph
 */
-GraphNode* CreateGraph(vector<vector<int>>& edges) {
+GraphNode* CreateGraph(const vector<vector<int>>& edges) {
 
     if (edges.size() == 0) {
         cerr << "Cannot make graph from empty list\n";
@@ -19,6 +19,7 @@ GraphNode* CreateGraph(vector<vector<int>>& edges) {
 
     set<int> values;
     map<int, GraphNode*> nodes;
+    
 
     // Init the unique set of all variables
     for (vector<int> link : edges) {
@@ -47,13 +48,13 @@ GraphNode* CreateGraph(vector<vector<int>>& edges) {
     Driver for performing a DFS on the given graph
     I/P: Root node
 */
-void G_DFS(GraphNode* root) {
-    set<GraphNode*> visited;
+void G_DFS(const GraphNode* root) {
+    set<const GraphNode*> visited;
     G_DFS(root, visited);
 }
 
 
-void G_DFS(GraphNode* node, set<GraphNode*>& visited) {
+void G_DFS(const GraphNode* node, set<const GraphNode*>& visited) {
 
     if (node == nullptr || visited.count(node) == 1)
         return;
@@ -67,5 +68,4 @@ void G_DFS(GraphNode* node, set<GraphNode*>& visited) {
     // Recursively visit all the neighbours
     for (GraphNode* neighbour : node->neighbors) 
         G_DFS(neighbour, visited);
-    
 }

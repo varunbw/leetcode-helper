@@ -13,7 +13,7 @@ using namespace std;
          offset to start parsing from (0 starts from argv[1])
     O/P: Parsed input in vector<int> format
 */
-vector<int> ArgsParseInt_1D(int argc, char** argv, int offset) {
+vector<int> ArgsParseInt_1D(const int argc, const char** argv, const int offset) {
 
     if (argc <= 1) {
         cerr << "No input parameters\n\n";
@@ -62,7 +62,7 @@ vector<int> ArgsParseInt_1D(int argc, char** argv, int offset) {
          offset to start parsing from (0 starts from argv[1])
     O/P: Parsed input in vector<vector<int>> format
 */
-vector<vector<int>> ArgsParseInt_2D(int argc, char** argv, int offset) {
+vector<vector<int>> ArgsParseInt_2D(const int argc, const char** argv, const int offset) {
 
     if (argc <= 1) {
         cerr << "No input parameters\n\n";
@@ -123,7 +123,7 @@ vector<vector<int>> ArgsParseInt_2D(int argc, char** argv, int offset) {
          offset to start parsing from (0 starts from argv[1])
     O/P: Parsed input in vector<string> format
 */
-vector<string> ArgsParseString_1D(int argc, char** argv, int offset) {
+vector<string> ArgsParseString_1D(const int argc, const char** argv, const int offset) {
 
     if (argc <= 1) {    
         cerr << "No input parameters\n\n";

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -f misc.o binaryTree.o graph.o linkedList.o parser.o 
+
 SOURCE_FILES="../src/misc.cpp ../src/binaryTree.cpp ../src/graph.cpp ../src/linkedList.cpp ../src/parser.cpp"
 OBJECT_FILES="misc.o   binaryTree.o   graph.o   linkedList.o   parser.o"
 LIBRARY_NAME="libmylib.a"
@@ -21,7 +23,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Delete object files
-rm misc.o binaryTree.o graph.o linkedList.o parser.o 
+rm -f misc.o binaryTree.o graph.o linkedList.o parser.o 
 
 if [ $? -eq 0 ]; then
     echo "Library successfully made"

@@ -10,8 +10,9 @@ using namespace std;
     O/P: Head of linked list
 */
 ListNode* CreateLinkedList() {
-
+    
     ListNode* head = new ListNode;
+    allocatedListNodes.push_back(head);
     ListNode* prevNode = head;
 
     cout << "Enter -1 to stop:\n";
@@ -20,6 +21,7 @@ ListNode* CreateLinkedList() {
     while (cin >> val) {
         if (val == -1) break;
         ListNode* newNode = new ListNode(val, nullptr);
+        allocatedListNodes.push_back(newNode);  
 
         prevNode->next = newNode;
         prevNode = newNode;
@@ -32,7 +34,7 @@ ListNode* CreateLinkedList() {
     Does what it says
     I/P: Head of linked list
 */
-void DisplayLinkedList(ListNode* head) {
+void DisplayLinkedList(const ListNode* head) {
 
     if (head->next == NULL) {
         cerr << "List is empty, nothing to display\n";
@@ -44,6 +46,7 @@ void DisplayLinkedList(ListNode* head) {
         cout << curr->val << ", ";
         curr = curr->next;
     }
-
+    
+    cout << endl;
     return;
 }
