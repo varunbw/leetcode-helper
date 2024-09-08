@@ -7,9 +7,9 @@ using namespace std;
 
 
 // -- Input Parsing
-vector<int> ArgsParseInt_1D(const int, const char**, const int);
-vector<vector<int>> ArgsParseInt_2D(const int, const char**, const int);
-vector<string> ArgsParseString_1D(const int, const char**, const int);
+vector<int> ArgsParseInt_1D(const int, char**, const int);
+vector<vector<int>> ArgsParseInt_2D(const int, char**, const int);
+vector<string> ArgsParseString_1D(const int, char**, const int);
 
 
 
@@ -85,7 +85,7 @@ inline vector<GraphNode*> allocatedGraphNodes;
 
 GraphNode* CreateGraph(const vector<vector<int>>&);
 void G_DFS(const GraphNode*);
-void G_DFS(GraphNode*, set<const GraphNode*>&);
+void G_DFS(const GraphNode*, set<const GraphNode*>&);
 
 
 
