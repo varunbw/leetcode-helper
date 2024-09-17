@@ -3,6 +3,14 @@
 
 using namespace std;
 
+static const int fastIO = []() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    return 0;
+}();
+
+
 class Solution {
 public:
 
@@ -17,8 +25,8 @@ int main(int argc, char** argv) {
 
     // -- 1D vec
     // vector<int> vec = ArgsParseInt_1D(argc, argv, 0);
-    // Print1DVector(vec);
-    
+    // Print1DVector(vec); cout << endl;
+
     // -- 2D vec
     // vector<vector<int>> grid = ArgsParseInt_2D(argc, argv, 0);
     // Print2DVector(grid);
@@ -26,6 +34,7 @@ int main(int argc, char** argv) {
     // -- String
     // vector<string> vec = ArgsParseString_1D(argc, argv, 0);
     // Print1DVector(vec);
+
 
     // -- Linked List
     // ListNode* head = CreateLinkedList();
@@ -39,7 +48,6 @@ int main(int argc, char** argv) {
     // -- Graph
     // GraphNode* root = CreateGraph(grid);
     // G_DFS(root);
-
 
 
     DeleteAllocatedNodes();

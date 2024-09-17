@@ -93,5 +93,12 @@ void G_DFS(const GraphNode*, set<const GraphNode*>&);
 void DeleteAllocatedNodes();
 
 
+// -- Performance Counters
+typedef std::chrono::_V2::system_clock::time_point TimePoint;
+
+TimePoint TimeNow_Microseconds();
+string TimeElapsed_Microseconds(TimePoint, int);
+string TimeElapsed_Microseconds(TimePoint, TimePoint, int);
+
 
 #endif
