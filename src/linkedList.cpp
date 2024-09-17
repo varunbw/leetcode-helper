@@ -6,8 +6,8 @@ using namespace std;
 
 // -- Linked List
 /*
-    Does what it says
-    O/P: Head of linked list
+    @brief Does what it says
+    @return Head of linked list
 */
 ListNode* CreateLinkedList() {
     
@@ -31,8 +31,8 @@ ListNode* CreateLinkedList() {
 }
 
 /*
-    Does what it says
-    I/P: Head of linked list
+    @brief Does what it says, prints to std::cout
+    @param head Node to start printing from
 */
 void DisplayLinkedList(const ListNode* head) {
 

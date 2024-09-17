@@ -3,16 +3,20 @@
 
 using namespace std;
 
-/// @brief Gives the current system time in microseconds
-/// @return Current system time in microseconds
+/* 
+    @brief Gives the current system time in microseconds
+    @return Current system time in microseconds
+*/
 TimePoint TimeNow_Microseconds() {
     return chrono::high_resolution_clock::now();
 }
 
-/// @brief Calculates the time difference between `start` and current time
-/// @param start Start of the interval
-/// @param division What to divide the result of end-start by, useful for calculating average time in loops
-/// @return String of format "Time elapsed: {time} us\n"
+/* 
+    @brief Calculates the time difference between `start` and current time
+    @param start Start of the interval
+    @param division What to divide the result of end-start by, useful for calculating average time in loops
+    @return String of format "Time elapsed: {time} us\n"
+*/
 string TimeElapsed_Microseconds(TimePoint start, int division) {
 
     if (division == 0) 
@@ -24,12 +28,13 @@ string TimeElapsed_Microseconds(TimePoint start, int division) {
     return string("Time elapsed: " + to_string(elapsed) + " us\n");
 }
 
-
-/// @brief Calculates the time difference between `start` and current time
-/// @param start Start of the interval
-/// @param end End of the interval
-/// @param division What to divide the result of end-start by, useful for calculating average time in loops
-/// @return String of format "Time elapsed: {time} us\n"
+/* 
+    @brief Calculates the time difference between `start` and current time
+    @param start Start of the interval
+    @param end End of the interval
+    @param division What to divide the result of end-start by, useful for calculating average time in loops
+    @return String of format "Time elapsed: {time} us\n"
+*/
 string TimeElapsed_Microseconds(TimePoint start, TimePoint end, int division) {
 
     if (division == 0) 

@@ -5,8 +5,7 @@ using namespace std;
 
 // -- Miscellaneous functions
 /*
-    Frees up the memory of all tree and graph nodes
-    I/P: Nodes vector
+    @brief Frees up the memory of all tree and graph nodes
 */
 void DeleteAllocatedNodes() {
 

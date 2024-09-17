@@ -4,11 +4,13 @@
 using namespace std;
 
 /*
-    Creates a graph with the given edges
-    Each vector<int> in edges is an edge between two nodes
+    @brief Creates a graph from the given edge list
+    @param edges Adjacency list
+    @return Root of graph
 
-    I/P: The edge list :)
-    O/P: Root node of graph
+    Each vector<int> in edges is an edge between two nodes.
+
+    TODO: Change to vector<pair<int, int>>
 */
 GraphNode* CreateGraph(const vector<vector<int>>& edges) {
 
@@ -45,8 +47,8 @@ GraphNode* CreateGraph(const vector<vector<int>>& edges) {
 
 
 /*
-    Driver for performing a DFS on the given graph
-    I/P: Root node
+    @brief Driver for performing a DFS on the given graph
+    @param root Node to start the DFS from
 */
 void G_DFS(const GraphNode* root) {
     set<const GraphNode*> visited;
@@ -54,6 +56,11 @@ void G_DFS(const GraphNode* root) {
 }
 
 
+/*
+    @brief Actually performs the DFS
+    @param node Node currently being visited
+    @param visited Adjacency list
+*/
 void G_DFS(const GraphNode* node, set<const GraphNode*>& visited) {
 
     if (node == nullptr || visited.count(node) == 1)

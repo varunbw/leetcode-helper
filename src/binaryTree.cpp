@@ -5,6 +5,10 @@ using namespace std;
 
 // -- Binary Tree
 /*
+    @brief Constructs a binary tree out of the given vector
+    @param nodes The representation of nodes
+    @return Root of tree
+
     Leetcode uses BFS to serialize binary trees into a string.
     ex:   1
          / \
@@ -14,8 +18,7 @@ using namespace std;
     
     gets serialized into "[1,2,3,null,null,4,5]"
 
-    I/P: A vector representation of the serialized string
-    O/P: Root node of the tree
+    * Check comment in source code for clearer representation
 */
 TreeNode* CreateBinaryTree(const vector<string>& nodes) {
 
@@ -60,9 +63,10 @@ TreeNode* CreateBinaryTree(const vector<string>& nodes) {
     return root;
 }
 
-
-// Basic DFS Preorder Traversal
-// I/P: Root of tree
+/* 
+    @brief Prints a preorder traversal of the given tree
+    @param root Node to start from
+*/
 void BT_PreorderTraversal(const TreeNode* root) {
     
     if (root == nullptr) return;

@@ -5,13 +5,14 @@ using namespace std;
 
 // -- Input Parsing
 /*
-    Parse inputs as ints from the command line
+    @brief Parse inputs as ints from the command line, and put them in a vector<int>
+    @param argc argc in main()
+    @param argv argv in main()
+    @param offset Offset to start parsing from from argv (offset 0 starts from argv[1])
+    @return Parsed input in vector<int> format
+
     This works on space separated numbers as well as
     a single argument as follows [1,2,3,4]
-    
-    I/P: argc, argv,
-         offset to start parsing from (0 starts from argv[1])
-    O/P: Parsed input in vector<int> format
 */
 vector<int> ArgsParseInt_1D(const int argc, char** argv, const int offset) {
 
@@ -53,14 +54,16 @@ vector<int> ArgsParseInt_1D(const int argc, char** argv, const int offset) {
 
 
 /*
-    Parse a 2D matrix from the command line
+    @brief Parse inputs as ints from the command line, and put them in a vector<vector<int>>
+    @param argc argc in main()
+    @param argv argv in main()
+    @param offset Offset to start parsing from from argv (offset 0 starts from argv[1])
+    @return Parsed input in vector<vector<int>> format
+
     This works with the following format only:
-        [[1,2,3],[4,5,6],[7,8,9]]
-        The above argument is a single string
-    
-    I/P: argc, argv
-         offset to start parsing from (0 starts from argv[1])
-    O/P: Parsed input in vector<vector<int>> format
+        [[1,2,3],[4,5,6],[7,8,9]].
+
+    The above argument is a single string
 */
 vector<vector<int>> ArgsParseInt_2D(const int argc, char** argv, const int offset) {
 
@@ -115,13 +118,13 @@ vector<vector<int>> ArgsParseInt_2D(const int argc, char** argv, const int offse
 
 
 /*
-    Parse inputs as strings from the command line
-    Works on space separated values as well as
-    a single value like this [5,1,4,null,null,3,6]
-    
-    I/P: argc, argv
-         offset to start parsing from (0 starts from argv[1])
-    O/P: Parsed input in vector<string> format
+    @brief Parse inputs as ints from the command line, and put them in a vector<string>
+    @param argc argc in main()
+    @param argv argv in main()
+    @param offset Offset to start parsing from from argv (offset 0 starts from argv[1])
+    @return Parsed input in vector<string> format
+
+    Works on space separated values as well as a single value like this ["hello world","checking","1234"]
 */
 vector<string> ArgsParseString_1D(const int argc, char** argv, const int offset) {
 
