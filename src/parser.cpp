@@ -138,17 +138,16 @@ vector<string> ArgsParseString_1D(const int argc, char** argv, const int offset)
     }
 
     vector<string> vec;
+    string inp = argv[1 + offset];
 
     // Case 1: space separated values
-    if (argv[1][0] != '[')
+    if (inp[0] != '[')
         for (int i = 1 + offset; i < argc; i++)
             vec.push_back(argv[i]);
     
 
     // Case 2: [values, like, this]
-    if (argv[1][0] == '[') {
-
-        string inp = argv[1 + offset];
+    if (inp[0] == '[') {
 
         // Remove '[' and ']'
         inp.erase(inp.begin());
