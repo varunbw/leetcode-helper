@@ -51,6 +51,7 @@ struct ListNode {
 inline vector<ListNode*> allocatedListNodes;
 
 ListNode* CreateLinkedList();
+ListNode* CreateLinkedList(const vector<int>&);
 void DisplayLinkedList(const ListNode*);
 
 
