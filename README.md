@@ -4,4 +4,26 @@ This basic C++ library provides utility functions for competitive programming (C
 
 The library *should* work on all platforms (Windows, Linux, Mac).
 
+# Installation
 
+1. Clone the repository
+
+`git clone https://github.com/varnubw/comp-prog-helper.git`
+
+2. Include the library in your project by including the relevant header files.
+
+`#include "cph.h"`
+
+
+# Usage
+
+# Compiling library
+Linux: `./compileLib.sh`\
+Windows: `bash ./compileLib.sh`
+
+# Running file
+Linux: `./runlc.sh [option (0, 1)] [params]`\
+Windows: `bash ./runlc.sh [option (0, 1)] [params]`
+
+# License
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

@@ -6,7 +6,6 @@ if [ "$#" -lt 1 ]; then
     echo "Mode:"
     echo "  0 - Compile with debug info"
     echo "  1 - Compile with debug info and execute with parameters"
-    # echo "  2 - Compile library and program, exec with params"
     echo ""
     exit 1
 fi  
