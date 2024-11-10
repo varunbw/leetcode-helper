@@ -71,7 +71,7 @@ void BT_PreorderTraversal(const TreeNode* root) {
     
     if (root == nullptr) return;
     
-    cout << root->val << ", ";
+    cout << root->val << "  ";
     BT_PreorderTraversal(root->left);
     BT_PreorderTraversal(root->right);
 

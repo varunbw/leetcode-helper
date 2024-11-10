@@ -1,2 +1,13 @@
+# vscode
 .vscode/
+
+# executable files
 lc
+*.out
+*.exe
+
+# testing
+test/
+
+# misc
+temp/
