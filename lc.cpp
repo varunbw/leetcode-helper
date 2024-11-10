@@ -13,11 +13,7 @@ static const int fastIO = []() {
 
 class Solution {
 public:
-    int minimumSubarrayLength(vector<int>& nums, int k) {
 
-        
-        
-    }
 };
 
 
@@ -30,9 +26,8 @@ int main(int argc, char** argv) {
     // vector<int> vec = ArgsParseInt_1D(argc, argv, 0);
     // Print1DVector(vec); cout << endl;
     
-    vector<int> vec1 = ArgsParseInt_1D(argc, argv, 1);
-    Print1DVector(vec1); cout << endl;
-    cout << sol.minimumSubarrayLength(vec1, stoi(argv[1]));
+    // vector<int> vec1 = ArgsParseInt_1D(argc, argv, 1);
+    // Print1DVector(vec1); cout << endl;
 
     // -- 2D vec
     // vector<vector<int>> grid = ArgsParseInt_2D(argc, argv, 0);

@@ -217,16 +217,16 @@ TimePoint TimeNow_Microseconds();
     @param division What to divide the result of end-start by, useful for calculating average time in loops
     @return String of format "Time elapsed: {time} us\n"
 */
-string TimeElapsed_Microseconds(TimePoint, int);
+string TimeElapsed_Microseconds(TimePoint, int = 1);
 
 /* 
-    @brief Calculates the time difference between `start` and current time
+    @brief Calculates the time difference between `start` and `end`
     @param start Start of the interval
     @param end End of the interval
     @param division What to divide the result of end-start by, useful for calculating average time in loops
     @return String of format "Time elapsed: {time} us\n"
 */
-string TimeElapsed_Microseconds(TimePoint, TimePoint, int);
+string TimeElapsed_Microseconds(TimePoint, TimePoint, int = 1);
 
 
 #endif
