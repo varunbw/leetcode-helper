@@ -4,6 +4,8 @@ This basic C++ library provides utility functions for competitive programming (C
 
 The library *should* work on all platforms (Windows, Linux, Mac).
 
+Checkout the functions the library has to offer at src/. Comments are included to help understand what each function does.
+
 # Installation
 
 1. Clone the repository
@@ -17,11 +19,11 @@ The library *should* work on all platforms (Windows, Linux, Mac).
 
 # Usage
 
-# Compiling library
+## Compiling library
 Linux: `./compileLib.sh`\
 Windows: `bash ./compileLib.sh`
 
-# Running file
+## Running file
 Linux: `./runlc.sh [option (0, 1)] [params]`\
 Windows: `bash ./runlc.sh [option (0, 1)] [params]`
 
