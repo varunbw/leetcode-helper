@@ -18,7 +18,7 @@ using namespace std;
     
     gets serialized into "[1,2,3,null,null,4,5]"
 
-    * Check comment in source code for clearer representation
+    * Check comment in source code for clearer visual representation
 */
 TreeNode* CreateBinaryTree(const vector<string>& nodes) {
 
