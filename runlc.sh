@@ -16,7 +16,7 @@ OUTPUT_FILE="lc"
 MODE=$1
 
 # Base compile command
-COMPILE_CMD="g++ -g $SOURCE_FILE -o $OUTPUT_FILE -Llib -lmylib -std=c++17 -fsanitize=address"
+COMPILE_CMD="g++ -g $SOURCE_FILE -o $OUTPUT_FILE -Llib -lcph -std=c++17 -fsanitize=address"
 
 # Compile the source file
 echo "Compiling with command: $COMPILE_CMD"

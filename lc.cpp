@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "include/mylib.h"
+#include "include/cph.h"
 
 using namespace std;
 
@@ -23,8 +23,8 @@ int main(int argc, char** argv) {
     Solution sol;
 
     // -- 1D vec
-    // vector<int> vec = ArgsParseInt_1D(argc, argv, 0);
-    // Print1DVector(vec); cout << endl;
+    vector<int> vec = ArgsParseInt_1D(argc, argv, 0);
+    Print1DVector(vec); cout << endl;
     
     // vector<int> vec1 = ArgsParseInt_1D(argc, argv, 1);
     // Print1DVector(vec1); cout << endl;
