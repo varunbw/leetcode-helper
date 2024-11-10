@@ -10,7 +10,7 @@ Checkout the functions the library has to offer at src/. Comments are included t
 
 1. Clone the repository
 
-`git clone https://github.com/varnubw/comp-prog-helper.git`
+`git clone https://github.com/varunbw/comp-prog-helper.git`
 
 2. Include the library in your project by including the relevant header files.
 
