@@ -2,7 +2,7 @@
 .vscode/
 
 # executable files
-lc
+main
 *.out
 *.exe
 

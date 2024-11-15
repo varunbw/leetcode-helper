@@ -4,7 +4,7 @@ rm -f misc.o binaryTree.o graph.o linkedList.o parser.o perf.o
 
 SOURCE_FILES="../src/misc.cpp ../src/binaryTree.cpp ../src/graph.cpp ../src/linkedList.cpp ../src/parser.cpp ../src/perf.cpp"
 OBJECT_FILES="misc.o   binaryTree.o   graph.o   linkedList.o   parser.o   perf.o"
-LIBRARY_NAME="libcph.a"
+LIBRARY_NAME="liblch.a"
 
 # Compile into object files
 COMPILE_CMD="g++ -g -c $SOURCE_FILES -std=c++17 -fsanitize=address"

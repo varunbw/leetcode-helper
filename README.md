@@ -1,6 +1,6 @@
-# Competetive Programming Helper
+# Leetcode Helper
 
-This basic C++ library provides utility functions for competitive programming (CP) that simplify common tasks such as input/output handling and data structure construction. It is designed to help you focus on solving problems rather than spending time setting up the necessary input/output infrastructure.
+This basic C++ library provides utility functions for mainly solving Leetcode problems (amongst others) that simplify common tasks such as input/output handling and data structure construction. It is designed to help you focus on solving problems rather than spending time setting up the necessary input/output infrastructure.
 
 The library *should* work on all platforms (Windows, Linux, Mac).
 
@@ -10,11 +10,11 @@ Checkout the functions the library has to offer at src/. Comments are included t
 
 1. Clone the repository
 
-`git clone https://github.com/varunbw/comp-prog-helper.git`
+`git clone https://github.com/varunbw/leetcode-helper.git`
 
 2. Include the library in your project by including the relevant header files.
 
-`#include "cph.h"`
+`#include "lch.h"`
 
 
 # Usage
