@@ -51,8 +51,6 @@ int main(int argc, char** argv) {
     // ListNode* head = CreateLinkedList(vec);
     // DisplayLinkedList(head); cout << endl;
 
-    // DisplayLinkedList(sol.swapPairs(head));
-
     // -- Binary Tree
     // vector<string> vec = ArgsParseString_1D(argc, argv, 0);
     // TreeNode* root = CreateBinaryTree(vec);
