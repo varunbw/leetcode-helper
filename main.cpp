@@ -17,6 +17,8 @@ public:
 };
 
 
+
+
 int main(int argc, char** argv) {
 
     cout << endl;
@@ -27,8 +29,7 @@ int main(int argc, char** argv) {
     inp >> t;
 
     while (t--) {
-        auto vec = ParseVector1D(inp);
-        Print1DVector(vec);
+        auto vec = FileParse_Int1D(inp);
         cout << "\n";
     }
 

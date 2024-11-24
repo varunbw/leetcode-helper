@@ -45,8 +45,10 @@ vector<vector<int>> ArgsParseInt_2D(const int, char**, const int);
 vector<string> ArgsParseString_1D(const int, char**, const int);
 
 
-vector<int> ParseVector1D(ifstream&);
-vector<vector<int>> ParseVector2D(ifstream&);
+vector<int> FileParse_Int1D(ifstream&);
+vector<vector<int>> FileParse_Int2D(ifstream&);
+vector<string> FileParse_String1D(ifstream&);
+vector<vector<string>> FileParse_String2D(ifstream&);
 
 
 // -- Vector Printing
