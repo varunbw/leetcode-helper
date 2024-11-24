@@ -45,6 +45,8 @@ vector<vector<int>> ArgsParseInt_2D(const int, char**, const int);
 vector<string> ArgsParseString_1D(const int, char**, const int);
 
 
+vector<int> ParseVector1D(ifstream&);
+
 
 // -- Vector Printing
 template <typename T>

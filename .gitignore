@@ -6,6 +6,11 @@ main
 *.out
 *.exe
 
+# I/O
+input.txt
+output.txt
+expected.txt
+
 # testing
 test/
 

@@ -22,6 +22,15 @@ int main(int argc, char** argv) {
     cout << endl;
     Solution sol;
 
+    ifstream inp("input.txt");
+    int t;
+    inp >> t;
+
+    while (t--) {
+        vector<int> vec = ParseVector1D(inp);
+        Print1DVector(vec);
+    }
+
     // -- 1D vec
     // vector<int> vec = ArgsParseInt_1D(argc, argv, 0);
     // Print1DVector(vec); cout << endl;
