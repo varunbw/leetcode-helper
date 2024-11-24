@@ -24,7 +24,9 @@ vector<int> FileParse_Int1D(ifstream& inp) {
 
     vector<int> res;
     string inputString;
-    inp >> inputString;
+    if(inp.peek() == '\n')
+        inp.ignore();
+    getline(inp, inputString);
 
     if (inputString.size() == 0)
         throw runtime_error("Tried to parse empty line in FileParse_Int1D(ifstream&), check number of testcases again");
@@ -64,7 +66,9 @@ vector<vector<int>> FileParse_Int2D(ifstream& inp) {
 
     vector<vector<int>> res;
     string inputString;
-    inp >> inputString;
+    if(inp.peek() == '\n')
+        inp.ignore();
+    getline(inp, inputString);
 
     if (inputString.size() == 0)
         throw runtime_error("Tried to parse empty line in FileParse_Int2D(ifstream&), check number of testcases again");
@@ -85,7 +89,7 @@ vector<vector<int>> FileParse_Int2D(ifstream& inp) {
         string itemInner;
 
         while(getline(ssInner, itemInner, ',')) {
-            if (itemInner[0] == '[')
+            while (itemInner[0] == '[' || itemInner[0] == ' ')
                 itemInner.erase(itemInner.begin());
 
             row.push_back(stoi(itemInner));  
@@ -136,8 +140,11 @@ vector<string> FileParse_String1D(ifstream& inp) {
     string item;
 
     while(getline(ss, item, ',')) {
-        if (item[0] == '"') item.erase(item.begin());
-        if (item.back() == '"') item.pop_back();
+        while (item[0] == '"' || item[0] == ' ')
+            item.erase(item.begin());
+        if (item.back() == '"')
+            item.pop_back();
+
         res.push_back(item);
     }
 
@@ -191,11 +198,13 @@ vector<vector<string>> FileParse_String2D(ifstream& inp) {
         string itemInner;
 
         while(getline(ssInner, itemInner, ',')) {
-            if (itemInner[0] == '[')
+            while (itemInner[0] == '[' || itemInner[0] == ' ')
                 itemInner.erase(itemInner.begin());
 
-            if (itemInner[0] == '"') itemInner.erase(itemInner.begin());
-            if (itemInner.back() == '"') itemInner.pop_back();
+            while (itemInner[0] == '"' || itemInner[0] == ' ')
+                itemInner.erase(itemInner.begin());
+            if (itemInner.back() == '"')
+                itemInner.pop_back();
             row.push_back(itemInner);  
         }
         

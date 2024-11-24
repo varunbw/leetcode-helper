@@ -5,8 +5,54 @@
 using namespace std;
 
 
+// -- Input Parsing - Through input file stream
+/*
+    @brief Parse inputs into a vector<int> from the given stream `inp`
+    @param `inp` The input file stream
+    @return Parsed input in a vector<int>
 
-// -- Input Parsing
+    This works with the following format only:
+        [1,2,3,4,...]
+    Space separated integers are not supported (yet?), use ArgsParseInt_1D and pass the input from command line if needed.
+*/
+vector<int> FileParse_Int1D(ifstream&);
+
+/*
+    @brief Parse inputs into a vector<vector<int>> from the given stream `inp`
+    @param `inp` The input file stream
+    @return Parsed input in a vector<vector<int>>
+
+    This works with the following format only:
+        [[1,2,3,4,...],[5,6,7,8,...],...]
+    Space separated integers are not supported.
+*/
+vector<vector<int>> FileParse_Int2D(ifstream&);
+
+/*
+    @brief Parse inputs into a vector<string> from the given stream `inp`
+    @param `inp` The input file stream
+    @return Parsed input in a vector<string>
+
+    This works with the following formats only:
+        ["Hello","World"]
+        [Hello,World]
+    Space separated strings are not supported (yet?), use ArgsParseInt_2D and pass the input from command line if needed.
+*/
+vector<string> FileParse_String1D(ifstream&);
+
+/*
+    @brief Parse inputs into a vector<vector<string>> from the given stream `inp`
+    @param `inp` The input file stream
+    @return Parsed input in a vector<vector<string>>
+
+    This works with the following format only:
+        [["Hello","World"],["This is ", "a test :)"]]
+*/
+vector<vector<string>> FileParse_String2D(ifstream&);
+
+
+// -- Input Parsing - Through command line arguments
+// These aren't really ideal, use the file parsers above
 /*
     @brief Parse inputs as ints from the command line, and put them in a vector<int>
     @param argc argc in main()
@@ -43,12 +89,6 @@ vector<vector<int>> ArgsParseInt_2D(const int, char**, const int);
     Works on space separated values as well as a single value like this ["hello world","checking","1234"]
 */
 vector<string> ArgsParseString_1D(const int, char**, const int);
-
-
-vector<int> FileParse_Int1D(ifstream&);
-vector<vector<int>> FileParse_Int2D(ifstream&);
-vector<string> FileParse_String1D(ifstream&);
-vector<vector<string>> FileParse_String2D(ifstream&);
 
 
 // -- Vector Printing
