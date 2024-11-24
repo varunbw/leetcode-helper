@@ -27,8 +27,9 @@ int main(int argc, char** argv) {
     inp >> t;
 
     while (t--) {
-        vector<int> vec = ParseVector1D(inp);
+        auto vec = ParseVector1D(inp);
         Print1DVector(vec);
+        cout << "\n";
     }
 
     // -- 1D vec

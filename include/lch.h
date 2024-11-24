@@ -46,6 +46,7 @@ vector<string> ArgsParseString_1D(const int, char**, const int);
 
 
 vector<int> ParseVector1D(ifstream&);
+vector<vector<int>> ParseVector2D(ifstream&);
 
 
 // -- Vector Printing
