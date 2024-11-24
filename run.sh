@@ -1,19 +1,8 @@
 #!/bin/bash
 
-# Check if at least one parameter is passed
-if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <mode> [args...]"
-    echo "Mode:"
-    echo "  0 - Compile with debug info"
-    echo "  1 - Compile with debug info and execute with parameters"
-    echo ""
-    exit 1
-fi
-
 SOURCE_FILE="main.cpp"
 OUTPUT_FILE="main"
 LIBRARY_FILE="lch"
-MODE=$1
 
 # Base compile command
 COMPILE_CMD="g++ -g $SOURCE_FILE -o $OUTPUT_FILE -Llib -l$LIBRARY_FILE -std=c++17 -fsanitize=address"
@@ -28,19 +17,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-if [ $? -eq 0 ]; then
-    echo "Compilation successful"
-    echo ""
-fi
-
-
-# Shift the mode parameter to access additional parameters
-shift
+echo "Compilation successful"
+echo ""
 
 # Execute the file if mode is 1, passing all remaining arguments
-if [ "$MODE" -eq 1 ]; then
-    echo "Executing with parameters: $@"
-    echo "---------------------------------------------------------------------------------------"
-    ./$OUTPUT_FILE "$@"
-fi
-
+echo "Executing with parameters: $@"
+echo "-----------------------------------------------------------------------------------------"
+./$OUTPUT_FILE "$@"
