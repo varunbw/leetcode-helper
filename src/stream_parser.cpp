@@ -8,8 +8,6 @@
 
     This works with the following format only:
         [1,2,3,4,...]
-    Do not put a space chracter anywhere.
-    Space separated integers are not supported (yet?), use ArgsParseInt_1D and pass the input from command line if needed.
 */
 vector<int> FileParse_Int1D(ifstream& inp) {
 
@@ -51,7 +49,6 @@ vector<int> FileParse_Int1D(ifstream& inp) {
 
     This works with the following format only:
         [[1,2,3,4,...],[5,6,7,8,...],...]
-    Do not put a space chracter anywhere; space separated integers are not supported.
 */
 vector<vector<int>> FileParse_Int2D(ifstream& inp) {
 
@@ -110,8 +107,6 @@ vector<vector<int>> FileParse_Int2D(ifstream& inp) {
     This works with the following formats only:
         ["Hello","World"]
         [Hello,World]
-    Do not put a space chracter anywhere.
-    Space separated strings are not supported (yet?), use ArgsParseInt_2D and pass the input from command line if needed.
 */
 vector<string> FileParse_String1D(ifstream& inp) {
 
@@ -160,7 +155,6 @@ vector<string> FileParse_String1D(ifstream& inp) {
     This works with the following format only:
         ["Hello","World"]
         [Hello,World]
-    Do not put a space chracter anywhere; space separated strings are not supported.
 */
 vector<vector<string>> FileParse_String2D(ifstream& inp) {
 

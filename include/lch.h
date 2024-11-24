@@ -13,7 +13,6 @@ using namespace std;
 
     This works with the following format only:
         [1,2,3,4,...]
-    Space separated integers are not supported (yet?), use ArgsParseInt_1D and pass the input from command line if needed.
 */
 vector<int> FileParse_Int1D(ifstream&);
 
@@ -24,7 +23,6 @@ vector<int> FileParse_Int1D(ifstream&);
 
     This works with the following format only:
         [[1,2,3,4,...],[5,6,7,8,...],...]
-    Space separated integers are not supported.
 */
 vector<vector<int>> FileParse_Int2D(ifstream&);
 
@@ -36,7 +34,6 @@ vector<vector<int>> FileParse_Int2D(ifstream&);
     This works with the following formats only:
         ["Hello","World"]
         [Hello,World]
-    Space separated strings are not supported (yet?), use ArgsParseInt_2D and pass the input from command line if needed.
 */
 vector<string> FileParse_String1D(ifstream&);
 
