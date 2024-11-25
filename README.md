@@ -10,22 +10,22 @@ Checkout the functions the library has to offer at src/. Comments are included t
 
 1. Clone the repository
 
-`git clone https://github.com/varunbw/leetcode-helper.git`
+```git clone https://github.com/varunbw/leetcode-helper.git```
 
 2. Include the library in your project by including the relevant header files.
 
-`#include "lch.h"`
+```#include "lch.h"```
 
 
 # Usage
 
 ## Compiling library
-Linux: `./compileLib.sh`\
-Windows: `bash ./compileLib.sh`
+Linux: ```./compileLib.sh```\
+Windows: ```bash ./compileLib.sh```
 
 ## Running file
-Linux: `./run.sh`\
-Windows: `bash ./run.sh`
+Linux: ```./run.sh```\
+Windows: ```bash ./run.sh```
 
 ## Refer [the FAQs](FAQ.md) for more help
 
