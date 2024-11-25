@@ -24,8 +24,10 @@ Linux: `./compileLib.sh`\
 Windows: `bash ./compileLib.sh`
 
 ## Running file
-Linux: `./run.sh [option (0, 1)] [params]`\
-Windows: `bash ./run.sh [option (0, 1)] [params]`
+Linux: `./run.sh`\
+Windows: `bash ./run.sh`
+
+## Refer [the FAQs](FAQ.md) for more help
 
 # License
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
