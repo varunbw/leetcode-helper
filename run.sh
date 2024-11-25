@@ -18,9 +18,5 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Compilation successful"
-echo ""
-
-# Execute the file if mode is 1, passing all remaining arguments
-echo "Executing with parameters: $@"
 echo "-----------------------------------------------------------------------------------------"
 ./$OUTPUT_FILE "$@"

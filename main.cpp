@@ -23,11 +23,11 @@ int main(int argc, char** argv) {
     Solution sol;
 
     ifstream fin("input.txt");
+    ifstream finExpected("expected.txt");
     int t;
     fin >> t;
 
     while (t--) {
-
         // -- 1D int
         // vector<int> vec = FileParse_Int1D(fin);
         // Print1DVector(vec); cout << "\n";
