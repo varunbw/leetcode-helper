@@ -1,22 +1,30 @@
 # FAQ
 
-### How do I give input?
+## What is a C++ library?
+Watch [this video](https://www.youtube.com/watch?v=a5kUr-u2UNo) to learn what libraries do before you get into this one.
+
+## How do I provide input?
 The code provided in `main.cpp` works in the standard competetive programming format.
-The code is parsed from a input file stream (`std::ifstream`), and considers the file `input.txt`. You can change the name of the file to suit your needs by accordingly changing it when it is initialized (Line 25, at the time of writing this).
+The code is parsed from a input file stream (`std::ifstream`), and considers the file `input.txt`. You can change the name of the file to suit your needs by accordingly changing it when it is initialized.
 
 The first line of the file should contain the number of testcases you want to run. Lines following it should contain the data to parse (each one on a new line).
 Arrange the file parsing functions in whatever format you want each testcase to be parsed in.
 
-Ex: Consider you want to parse a `1D vector<int>`, and then, a `1D vector<string>`. You have two such test cases.
+Ex: Consider you want to parse a `1D vector<int>`, and then, a `1D vector<string>`. You have **2** such test cases.
 
 The file `input.txt` should look like this:
 ```txt
-2                  <--- No. of testcases
-[1,2,3,4,5]        <--- 1D int     Testcase 1
-["Hello", "world"] <--- 1D string  Testcase 1
-[6,7,8,9,0]        <--- 1D int     Testcase 2
-["Testing", "123"] <--- 1D string  Testcase 2
+2
+[1,2,3,4,5]
+["Hello","world"]
+[6,7,8,9,0]
+["Testing","123"]
 ```
+
+The 1st line `2` states that there are 2 testcases.\
+The 2nd line `[1,2,3,4,5]` represents the `1D vector<int>` to be parsed.\
+The 3rd line `["Hello","world"]` represents the `1D vector<string>` to be parsed.\
+The 4th and 5th line contain the next test case.
 
 The contents of your loop should look like this
 ```cpp
@@ -29,6 +37,14 @@ while (t--) {
 
 This works because file streams work the same way as `cin` does.
 
+#### Passing data from the command line
+If you don't want to use files for some reason, you can provide command line arguments as well by using the `ArgsParse_` functions instead, that take stuff from the command line. Pass the parameters correctly, reference comments to figure out what they need.
+
+#### Parsing data from cin instead of the file
+Simply pass `cin` as a parameter to the `FileParse_` functions instead.
+
+## How do I make data structures like trees, graphs, etc?
+Functions like `CreateLinkedList`, `CreateBinaryTree`, `CreateGraph`, etc. all expect their own format. Refer the comments to figure out what argument to pass, and what you as the return value.
 
 ## How do I know what a function does?
 ~~Practice literacy~~ You can hover over a function in VS Code or other editors like it, and it'll show you the comment explaining what the function does. Alternatively, you can directly go to either the header file [lch.h](include/lch.h), or the functions respective source file in `src/`.

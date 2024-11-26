@@ -10,22 +10,47 @@ Checkout the functions the library has to offer at src/. Comments are included t
 
 1. Clone the repository
 
-`git clone https://github.com/varunbw/leetcode-helper.git`
+```bash
+git clone https://github.com/varunbw/leetcode-helper.git
+```
 
 2. Include the library in your project by including the relevant header files.
 
-`#include "lch.h"`
+```cpp
+#include "lch.h"
+```
 
 
 # Usage
 
 ## Compiling library
-Linux: `./compileLib.sh`\
-Windows: `bash ./compileLib.sh`
+#### Linux
+```bash
+./compileLib.sh
+```
+#### Windows
+```bash
+bash ./compileLib.sh
+```
 
-## Running file
-Linux: `./run.sh`\
-Windows: `bash ./run.sh`
+## Running the file
+#### Linux
+```bash
+./run.sh
+```
+#### Windows
+```bash
+bash ./run.sh
+```
+The base command for compiling with g++ and linking the library correctly is as follows:
+```bash
+g++ main.cpp -Llib -llch -std=c++17
+```
+
+The command used in `run.sh` is:
+```bash
+g++ -g main.cpp -o main -Llib -llch -std=c++17 -fsanitize=address
+```
 
 ## Refer [the FAQs](FAQ.md) for more help
 
