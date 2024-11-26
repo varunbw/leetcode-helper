@@ -60,7 +60,7 @@ vector<vector<string>> FileParse_String2D(ifstream&);
     This works on space separated numbers as well as
     a single argument as follows [1,2,3,4]
 */
-vector<int> ArgsParseInt_1D(const int, char**, const int);
+vector<int> ArgsParse_Int1D(const int, char**, const int);
 
 /*
     @brief Parse inputs as ints from the command line, and put them in a vector<vector<int>>
@@ -74,7 +74,7 @@ vector<int> ArgsParseInt_1D(const int, char**, const int);
 
     The above argument is a single string
 */
-vector<vector<int>> ArgsParseInt_2D(const int, char**, const int);
+vector<vector<int>> ArgsParse_Int2D(const int, char**, const int);
 
 /*
     @brief Parse inputs as ints from the command line, and put them in a vector<string>
@@ -85,7 +85,7 @@ vector<vector<int>> ArgsParseInt_2D(const int, char**, const int);
 
     Works on space separated values as well as a single value like this ["hello world","checking","1234"]
 */
-vector<string> ArgsParseString_1D(const int, char**, const int);
+vector<string> ArgsParse_String1D(const int, char**, const int);
 
 
 // -- Vector Printing

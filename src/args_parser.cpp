@@ -14,7 +14,7 @@ using namespace std;
     This works on space separated numbers as well as
     a single argument as follows [1,2,3,4]
 */
-vector<int> ArgsParseInt_1D(const int argc, char** argv, const int offset) {
+vector<int> ArgsParse_Int1D(const int argc, char** argv, const int offset) {
 
     if (argc <= 1) {
         cerr << "No input parameters\n\n";
@@ -65,7 +65,7 @@ vector<int> ArgsParseInt_1D(const int argc, char** argv, const int offset) {
 
     The above argument is a single string
 */
-vector<vector<int>> ArgsParseInt_2D(const int argc, char** argv, const int offset) {
+vector<vector<int>> ArgsParse_Int2D(const int argc, char** argv, const int offset) {
 
     if (argc <= 1) {
         cerr << "No input parameters\n\n";
@@ -126,7 +126,7 @@ vector<vector<int>> ArgsParseInt_2D(const int argc, char** argv, const int offse
 
     Works on space separated values as well as a single value like this ["hello world","checking","1234"]
 */
-vector<string> ArgsParseString_1D(const int argc, char** argv, const int offset) {
+vector<string> ArgsParse_String1D(const int argc, char** argv, const int offset) {
 
     if (argc <= 1) {    
         cerr << "No input parameters\n\n";
