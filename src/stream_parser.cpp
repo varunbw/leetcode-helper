@@ -169,7 +169,7 @@ vector<vector<string>> FileParse_String2D(ifstream& inp) {
 
     vector<vector<string>> res;
     string inputString;
-    if(inp.peek() == '\n')
+    if (inp.peek() == '\n')
         inp.ignore();
     getline(inp, inputString);
 
@@ -203,6 +203,66 @@ vector<vector<string>> FileParse_String2D(ifstream& inp) {
         }
         
         res.push_back(row);
+    }
+
+    return res;
+}
+
+
+/*
+    @brief Parse inputs into a vector<char> from the given stream `inp`
+    @param `inp` The input file stream
+    @return Parsed input in a vector<char>
+
+    This works with the following formats
+        ["a","b","c","d","e"]
+        ['a','b','c','d','e']
+        [a,b,c,d,e]
+        a,b,c,d,e
+
+    You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
+*/
+vector<char> FileParse_Char1D(ifstream& inp) {
+
+    if (inp.is_open() == false)
+        throw runtime_error("Input stream not open in FileParse_Int1D(ifstream&)");
+
+    if (inp.fail())
+        throw runtime_error("Input stream failed due to some reason in FileParse_Int1D(ifstream&)");
+
+    if (inp.eof())
+        throw runtime_error("Input stream at EOF in FileParse_Int1D(ifstream&), check number of testcases again");
+
+    string line;
+    // A newline character can sometimes be left in the buffer
+    while (inp.peek() == '\n')
+        inp.ignore();
+    getline(inp, line);
+
+    if (line.size() == 0)
+        throw runtime_error("Tried to parse empty line in FileParse_Char1D(ifstream&), check number of testcases again");
+
+    // Ideally, the input should be encased in square brackets
+    // The if statements are here just to check that is, and we dont lose any data
+    if (line[0] == '[')
+        line.erase(line.begin());
+    if (line.back() == ']')
+        line.pop_back();
+    
+    vector<char> res;
+    stringstream ss(line);
+    string item;
+
+    while (getline (ss, item, ',')) {
+        // Erase any '"' or spaces from the beginning
+        while (item.size() && (item[0] == '"' || item[0] == ' '))
+            item.erase(item.begin());
+        // `item` might have a closing '"'
+        if (item.back() == '"')
+            item.pop_back();
+        
+        // Add the 0th element of item, which happens to be the entire thing
+        res.push_back(item[0]);
     }
 
     return res;

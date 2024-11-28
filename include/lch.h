@@ -47,6 +47,22 @@ vector<string> FileParse_String1D(ifstream&);
 */
 vector<vector<string>> FileParse_String2D(ifstream&);
 
+/*
+    @brief Parse inputs into a vector<char> from the given stream `inp`
+    @param `inp` The input file stream
+    @return Parsed input in a vector<char>
+
+    This works with the following formats
+        ["a","b","c","d","e"]
+        ['a','b','c','d','e']
+        [a,b,c,d,e]
+        a,b,c,d,e
+
+    You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
+*/
+vector<char> FileParse_Char1D(ifstream& inp);
+
+
 
 // -- Input Parsing - Through command line arguments
 // These aren't really ideal, use the file parsers above
