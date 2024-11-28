@@ -9,8 +9,6 @@ using namespace std;
     @return Root of graph
 
     Each vector<int> in edges is an edge between two nodes.
-
-    TODO: Change to vector<pair<int, int>>
 */
 GraphNode* CreateGraph(const vector<vector<int>>& edges) {
 
@@ -21,7 +19,6 @@ GraphNode* CreateGraph(const vector<vector<int>>& edges) {
 
     set<int> values;
     map<int, GraphNode*> nodes;
-    
 
     // Init the unique set of all variables
     for (vector<int> link : edges) {
