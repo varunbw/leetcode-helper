@@ -23,6 +23,8 @@ vector<int> FileParse_Int1D(ifstream&);
 
     This works with the following format only:
         [[1,2,3,4,...],[5,6,7,8,...],...]
+
+    IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
 */
 vector<vector<int>> FileParse_Int2D(ifstream&);
 
@@ -44,6 +46,8 @@ vector<string> FileParse_String1D(ifstream&);
 
     This works with the following format only:
         [["Hello","World"],["This is ", "a test :)"]]
+
+    IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
 */
 vector<vector<string>> FileParse_String2D(ifstream&);
 
@@ -62,7 +66,19 @@ vector<vector<string>> FileParse_String2D(ifstream&);
 */
 vector<char> FileParse_Char1D(ifstream& inp);
 
+/*
+    @brief Parse inputs into a vector<vector<char>> from the given stream `inp`
+    @param `inp` The input file stream
+    @return Parsed input in a vector<vector<char>>
 
+    This works with the following formats
+        [["a","b","c","d","e"],['a','b','c','d','e']]
+        [[a,b,c,d,e],[a,b,c,d,e]]
+
+    You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
+    IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
+*/
+vector<vector<char>> FileParse_Char2D(ifstream& inp);
 
 // -- Input Parsing - Through command line arguments
 // These aren't really ideal, use the file parsers above

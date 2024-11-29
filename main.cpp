@@ -26,6 +26,8 @@ int main(int argc, char** argv) {
     ifstream finExpected("expected.txt");
     int t;
     fin >> t;
+    while (fin.peek() == '\n')
+        fin.ignore();
 
     while (t--) {
         // -- 1D int
