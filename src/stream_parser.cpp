@@ -1,6 +1,36 @@
 #include <bits/stdc++.h>
 #include "../include/lch.h"
 
+
+void ValidateInputStream(ifstream& inp, string callerFuncName) {
+    
+    if (inp.is_open() == false)
+        throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream not open");
+
+    if (inp.fail())
+        throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream failed due to some reason");
+
+    if (inp.eof())
+        throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream at EOF, check number of testcases again");
+    
+    return;
+}
+
+
+string GetLineFromStream(ifstream& inp, string callerFuncName) {
+
+    string res;
+    while(inp.peek() == '\n')
+        inp.ignore();
+    
+    getline(inp, res);
+
+    if (res.size() == 0)
+        throw runtime_error("[ERROR]: " + callerFuncName + ": Tried to parse empty line in, check number of testcases again");
+
+    return res;
+}
+
 /*
     @brief Parse inputs into a vector<int> from the given stream `inp`
     @param `inp` The input file stream
@@ -11,23 +41,11 @@
 */
 vector<int> FileParse_Int1D(ifstream& inp) {
 
-    if (inp.is_open() == false)
-        throw runtime_error("Input stream not open in FileParse_Int1D(ifstream&)");
-
-    if (inp.fail())
-        throw runtime_error("Input stream failed due to some reason in FileParse_Int1D(ifstream&)");
-
-    if (inp.eof())
-        throw runtime_error("Input stream at EOF in FileParse_Int1D(ifstream&), check number of testcases again");
+    ValidateInputStream(inp, "FileParse_Int1D");
 
     vector<int> res;
-    string inputString;
-    if(inp.peek() == '\n')
-        inp.ignore();
-    getline(inp, inputString);
-
-    if (inputString.size() == 0)
-        throw runtime_error("Tried to parse empty line in FileParse_Int1D(ifstream&), check number of testcases again");
+    
+    string inputString = GetLineFromStream(inp, "FileParse_Int1D");
 
     inputString.erase(inputString.begin());
     inputString.pop_back();
@@ -52,14 +70,7 @@ vector<int> FileParse_Int1D(ifstream& inp) {
 */
 vector<vector<int>> FileParse_Int2D(ifstream& inp) {
 
-    if (inp.is_open() == false)
-        throw runtime_error("Input stream not open in FileParse_Int2D(ifstream&)");
-
-    if (inp.fail())
-        throw runtime_error("Input stream failed due to some reason in FileParse_Int2D(ifstream&)");
-
-    if (inp.eof())
-        throw runtime_error("Input stream at EOF in FileParse_Int2D(ifstream&), check number of testcases again");
+    ValidateInputStream(inp, "FileParse_Int2D");
 
     vector<vector<int>> res;
     string inputString;
@@ -110,14 +121,7 @@ vector<vector<int>> FileParse_Int2D(ifstream& inp) {
 */
 vector<string> FileParse_String1D(ifstream& inp) {
 
-    if (inp.is_open() == false)
-        throw runtime_error("Input stream not open in FileParse_String1D(ifstream&)");
-
-    if (inp.fail())
-        throw runtime_error("Input stream failed due to some reason in FileParse_String1D(ifstream&)");
-
-    if (inp.eof())
-        throw runtime_error("Input stream at EOF in FileParse_String1D(ifstream&), check number of testcases again");
+    ValidateInputStream(inp, "FileParse_String1D");
 
     vector<string> res;
     string inputString;
@@ -158,14 +162,7 @@ vector<string> FileParse_String1D(ifstream& inp) {
 */
 vector<vector<string>> FileParse_String2D(ifstream& inp) {
 
-    if (inp.is_open() == false)
-        throw runtime_error("Input stream not open in FileParse_String2D(ifstream&)");
-
-    if (inp.fail())
-        throw runtime_error("Input stream failed due to some reason in FileParse_String2D(ifstream&)");
-
-    if (inp.eof())
-        throw runtime_error("Input stream at EOF in FileParse_String2D(ifstream&), check number of testcases again");
+    ValidateInputStream(inp, "FileParse_String2D");
 
     vector<vector<string>> res;
     string inputString;
@@ -224,14 +221,7 @@ vector<vector<string>> FileParse_String2D(ifstream& inp) {
 */
 vector<char> FileParse_Char1D(ifstream& inp) {
 
-    if (inp.is_open() == false)
-        throw runtime_error("Input stream not open in FileParse_Int1D(ifstream&)");
-
-    if (inp.fail())
-        throw runtime_error("Input stream failed due to some reason in FileParse_Int1D(ifstream&)");
-
-    if (inp.eof())
-        throw runtime_error("Input stream at EOF in FileParse_Int1D(ifstream&), check number of testcases again");
+    ValidateInputStream(inp, "FileParse_Char1D");
 
     string line;
     // A newline character can sometimes be left in the buffer
@@ -282,14 +272,7 @@ vector<char> FileParse_Char1D(ifstream& inp) {
 */
 vector<vector<char>> FileParse_Char2D(ifstream& inp) {
 
-    if (inp.is_open() == false)
-        throw runtime_error("Input stream not open in FileParse_Char(ifstream&)");
-
-    if (inp.fail())
-        throw runtime_error("Input stream failed due to some reason in FileParse_Char(ifstream&)");
-
-    if (inp.eof())
-        throw runtime_error("Input stream at EOF in FileParse_Char(ifstream&), check number of testcases again");
+    ValidateInputStream(inp, "FileParse_Char2D");
 
     // Fetch an entire line and remove any newline characters that might be still left in the buffer
     string line;
