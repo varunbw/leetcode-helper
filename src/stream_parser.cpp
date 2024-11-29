@@ -2,28 +2,28 @@
 #include "../include/lch.h"
 
 
-void ValidateInputStream(ifstream& inp, string callerFuncName) {
+void ValidateInputStream(ifstream& fin, string callerFuncName) {
     
-    if (inp.is_open() == false)
+    if (fin.is_open() == false)
         throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream not open");
 
-    if (inp.fail())
+    if (fin.fail())
         throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream failed due to some reason");
 
-    if (inp.eof())
+    if (fin.eof())
         throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream at EOF, check number of testcases again");
     
     return;
 }
 
 
-string GetLineFromStream(ifstream& inp, string callerFuncName) {
+string GetLineFromStream(ifstream& fin, string callerFuncName) {
 
     string res;
-    while (inp.peek() == '\n')
-        inp.ignore();
+    while (fin.peek() == '\n')
+        fin.ignore();
     
-    getline(inp, res);
+    getline(fin, res);
 
     if (res.size() == 0)
         throw runtime_error("[ERROR]: " + callerFuncName + ": Tried to parse empty line in, check number of testcases again");
@@ -32,17 +32,17 @@ string GetLineFromStream(ifstream& inp, string callerFuncName) {
 }
 
 /*
-    @brief Parse inputs into a vector<int> from the given stream `inp`
-    @param `inp` The input file stream
+    @brief Parse inputs into a vector<int> from the given stream `fin`
+    @param `fin` The input file stream
     @return Parsed input in a vector<int>
 
     This works with the following format only:
         [1,2,3,4,...]
 */
-vector<int> FileParse_Int1D(ifstream& inp) {
+vector<int> FileParse_Int1D(ifstream& fin) {
 
-    ValidateInputStream(inp, "FileParse_Int1D");
-    string line = GetLineFromStream(inp, "FileParse_Int1D");
+    ValidateInputStream(fin, "FileParse_Int1D");
+    string line = GetLineFromStream(fin, "FileParse_Int1D");
 
     if (line[0] == '[')
         line.erase(line.begin());
@@ -64,17 +64,17 @@ vector<int> FileParse_Int1D(ifstream& inp) {
 
 
 /*
-    @brief Parse inputs into a vector<vector<int>> from the given stream `inp`
-    @param `inp` The input file stream
+    @brief Parse inputs into a vector<vector<int>> from the given stream `fin`
+    @param `fin` The input file stream
     @return Parsed input in a vector<vector<int>>
 
     This works with the following format only:
         [[1,2,3,4,...],[5,6,7,8,...],...]
 */
-vector<vector<int>> FileParse_Int2D(ifstream& inp) {
+vector<vector<int>> FileParse_Int2D(ifstream& fin) {
 
-    ValidateInputStream(inp, "FileParse_Int2D");
-    string line = GetLineFromStream(inp, "FileParse_Int2D");
+    ValidateInputStream(fin, "FileParse_Int2D");
+    string line = GetLineFromStream(fin, "FileParse_Int2D");
 
     if (line[0] == '[')
         line.erase(line.begin());
@@ -108,19 +108,22 @@ vector<vector<int>> FileParse_Int2D(ifstream& inp) {
 
 
 /*
-    @brief Parse inputs into a vector<string> from the given stream `inp`
-    @param `inp` The input file stream
+    @brief Parse inputs into a vector<string> from the given stream `fin`
+    @param `fin` The input file stream
     @return Parsed input in a vector<string>
 
-    This works with the following formats only:
+    This works with the following format only:
         ["Hello","World"]
-        ['Hello','World']
-        [Hello,World]
-*/
-vector<string> FileParse_String1D(ifstream& inp) {
 
-    ValidateInputStream(inp, "FileParse_String1D");
-    string line = GetLineFromStream(inp, "FileParse_String1D");
+    Although support for single inverted commas, and nothing at all
+    ie ('Hello', or Hello) is possible, its not done in the event that a string input contains the characters " or ' at the beginning of the input
+    It is not possible to determine in this case what pattern the user is following
+    Hence, it is safer to wrap all strings around 2 " s
+*/
+vector<string> FileParse_String1D(ifstream& fin) {
+
+    ValidateInputStream(fin, "FileParse_String1D");
+    string line = GetLineFromStream(fin, "FileParse_String1D");
 
     if (line[0] == '[')
         line.erase(line.begin());
@@ -136,9 +139,9 @@ vector<string> FileParse_String1D(ifstream& inp) {
         while (item.size() && item[0] == ' ')
             item.erase(item.begin());
         
+        // Remove starting and ending "s
         if (item.size() && (item[0] == '"' || item[0] == '\''))
             item.erase(item.begin());
-
         if (item.back() == '"')
             item.pop_back();
 
@@ -150,30 +153,26 @@ vector<string> FileParse_String1D(ifstream& inp) {
 
 
 /*
-    @brief Parse inputs into a vector<vector<string>> from the given stream `inp`
-    @param `inp` The input file stream
+    @brief Parse inputs into a vector<vector<string>> from the given stream `fin`
+    @param `fin` The input file stream
     @return Parsed input in a vector<vector<string>>
 
     This works with the following format only:
-        ["Hello","World"]
-        [Hello,World]
+        [["Hello","World"],["This is ", "a test"]]
+    
+    Refer comment at FileParse_String1D for more info
 */
-vector<vector<string>> FileParse_String2D(ifstream& inp) {
+vector<vector<string>> FileParse_String2D(ifstream& fin) {
 
-    ValidateInputStream(inp, "FileParse_String2D");
+    ValidateInputStream(fin, "FileParse_String2D");
+    string line = GetLineFromStream(fin, "FileParse_String2D");
+
+    if (line[0] == '[')
+        line.erase(line.begin());
+    if (line.back() == ']')
+        line.pop_back();
 
     vector<vector<string>> res;
-    string line;
-    if (inp.peek() == '\n')
-        inp.ignore();
-    getline(inp, line);
-
-    if (line.size() == 0)
-        throw runtime_error("Tried to parse empty line in FileParse_String2D(ifstream&), check number of testcases again");
-    
-    line.erase(line.begin());
-    line.pop_back();
-
     stringstream ssOuter(line);
     string itemOuter;
 
@@ -182,18 +181,20 @@ vector<vector<string>> FileParse_String2D(ifstream& inp) {
             itemOuter.erase(itemOuter.begin());
 
         vector<string> row;
-
         stringstream ssInner(itemOuter);
         string itemInner;
 
         while(getline(ssInner, itemInner, ',')) {
-            while (itemInner[0] == '[' || itemInner[0] == ' ')
+            // Remove any opening brackets and whitespaces that the item might have
+            while (itemInner.size() && (itemInner[0] == '[' || itemInner[0] == ' '))
                 itemInner.erase(itemInner.begin());
 
-            while (itemInner[0] == '"' || itemInner[0] == ' ')
+            // Remove the "" that a string is encased in
+            if (itemInner.size() && itemInner[0] == '"')
                 itemInner.erase(itemInner.begin());
             if (itemInner.back() == '"')
                 itemInner.pop_back();
+
             row.push_back(itemInner);  
         }
         
@@ -205,8 +206,8 @@ vector<vector<string>> FileParse_String2D(ifstream& inp) {
 
 
 /*
-    @brief Parse inputs into a vector<char> from the given stream `inp`
-    @param `inp` The input file stream
+    @brief Parse inputs into a vector<char> from the given stream `fin`
+    @param `fin` The input file stream
     @return Parsed input in a vector<char>
 
     This works with the following formats
@@ -217,15 +218,15 @@ vector<vector<string>> FileParse_String2D(ifstream& inp) {
 
     You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
 */
-vector<char> FileParse_Char1D(ifstream& inp) {
+vector<char> FileParse_Char1D(ifstream& fin) {
 
-    ValidateInputStream(inp, "FileParse_Char1D");
+    ValidateInputStream(fin, "FileParse_Char1D");
 
     string line;
     // A newline character can sometimes be left in the buffer
-    while (inp.peek() == '\n')
-        inp.ignore();
-    getline(inp, line);
+    while (fin.peek() == '\n')
+        fin.ignore();
+    getline(fin, line);
 
     if (line.size() == 0)
         throw runtime_error("Tried to parse empty line in FileParse_Char1D(ifstream&), check number of testcases again");
@@ -258,8 +259,8 @@ vector<char> FileParse_Char1D(ifstream& inp) {
 
 
 /*
-    @brief Parse inputs into a vector<vector<char>> from the given stream `inp`
-    @param `inp` The input file stream
+    @brief Parse inputs into a vector<vector<char>> from the given stream `fin`
+    @param `fin` The input file stream
     @return Parsed input in a vector<vector<char>>
 
     This works with the following formats
@@ -268,15 +269,15 @@ vector<char> FileParse_Char1D(ifstream& inp) {
 
     You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
 */
-vector<vector<char>> FileParse_Char2D(ifstream& inp) {
+vector<vector<char>> FileParse_Char2D(ifstream& fin) {
 
-    ValidateInputStream(inp, "FileParse_Char2D");
+    ValidateInputStream(fin, "FileParse_Char2D");
 
     // Fetch an entire line and remove any newline characters that might be still left in the buffer
     string line;
-    while (inp.peek() == '\n')
-        inp.ignore();
-    getline(inp, line);
+    while (fin.peek() == '\n')
+        fin.ignore();
+    getline(fin, line);
 
     // Just in case
     if (line.size() == 0)
