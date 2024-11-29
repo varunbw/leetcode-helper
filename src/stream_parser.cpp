@@ -112,13 +112,10 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
     @param `fin` The input file stream
     @return Parsed input in a vector<string>
 
-    This works with the following format only:
+    Wrap your strings with "", this function works with the following format only:
         ["Hello","World"]
 
-    Although support for single inverted commas, and nothing at all
-    ie ('Hello', or Hello) is possible, its not done in the event that a string input contains the characters " or ' at the beginning of the input
-    It is not possible to determine in this case what pattern the user is following
-    Hence, it is safer to wrap all strings around 2 " s
+    Refer FAQs on why more formats aren't supported
 */
 vector<string> FileParse_String1D(ifstream& fin) {
 
@@ -140,7 +137,7 @@ vector<string> FileParse_String1D(ifstream& fin) {
             item.erase(item.begin());
         
         // Remove starting and ending "s
-        if (item.size() && (item[0] == '"' || item[0] == '\''))
+        if (item.size() && item[0] == '"')
             item.erase(item.begin());
         if (item.back() == '"')
             item.pop_back();
@@ -157,10 +154,12 @@ vector<string> FileParse_String1D(ifstream& fin) {
     @param `fin` The input file stream
     @return Parsed input in a vector<vector<string>>
 
-    This works with the following format only:
+    Wrap your strings with "", this function works with the following format only:
         [["Hello","World"],["This is ", "a test"]]
     
-    Refer comment at FileParse_String1D for more info
+    You may leave spaces here anywhere, but in case you dont see the expected output, just stick to no spaces
+
+    Refer FAQs on why more formats aren't supported
 */
 vector<vector<string>> FileParse_String2D(ifstream& fin) {
 
@@ -210,29 +209,19 @@ vector<vector<string>> FileParse_String2D(ifstream& fin) {
     @param `fin` The input file stream
     @return Parsed input in a vector<char>
 
-    This works with the following formats
+    Wrap your chars with "", this function works with the following format only:
         ["a","b","c","d","e"]
-        ['a','b','c','d','e']
-        [a,b,c,d,e]
-        a,b,c,d,e
 
-    You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
+    You may leave spaces here anywhere, but in case you dont see the expected output, just stick to no spaces
+
+    Refer FAQs on why more formats aren't supported
 */
 vector<char> FileParse_Char1D(ifstream& fin) {
 
     ValidateInputStream(fin, "FileParse_Char1D");
+    string line = GetLineFromStream(fin, "FileParse_Char1D");
 
-    string line;
-    // A newline character can sometimes be left in the buffer
-    while (fin.peek() == '\n')
-        fin.ignore();
-    getline(fin, line);
-
-    if (line.size() == 0)
-        throw runtime_error("Tried to parse empty line in FileParse_Char1D(ifstream&), check number of testcases again");
-
-    // Ideally, the input should be encased in square brackets
-    // The if statements are here just to check that is, and we dont lose any data
+    // Erase any leading/trailing brackets that ideally should be there
     if (line[0] == '[')
         line.erase(line.begin());
     if (line.back() == ']')
@@ -243,10 +232,13 @@ vector<char> FileParse_Char1D(ifstream& fin) {
     string item;
 
     while (getline (ss, item, ',')) {
-        // Erase any '"' or spaces from the beginning
-        while (item.size() && (item[0] == '"' || item[0] == ' '))
+        // Erase any spaces from the beginning
+        while (item.size() && item[0] == ' ')
             item.erase(item.begin());
-        // `item` might have a closing '"'
+
+        // Remove the "" that a character is encased in
+        if (item.size() && item[0] == '"')
+            item.erase(item.begin());
         if (item.back() == '"')
             item.pop_back();
         
@@ -263,25 +255,18 @@ vector<char> FileParse_Char1D(ifstream& fin) {
     @param `fin` The input file stream
     @return Parsed input in a vector<vector<char>>
 
-    This works with the following formats
+    Wrap your chars with "", this function works with the following format only:
         [["a","b","c","d","e"],['a','b','c','d','e']]
         [[a,b,c,d,e],[a,b,c,d,e]]
 
     You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
+
+    Refer FAQs on why more formats aren't supported
 */
 vector<vector<char>> FileParse_Char2D(ifstream& fin) {
 
     ValidateInputStream(fin, "FileParse_Char2D");
-
-    // Fetch an entire line and remove any newline characters that might be still left in the buffer
-    string line;
-    while (fin.peek() == '\n')
-        fin.ignore();
-    getline(fin, line);
-
-    // Just in case
-    if (line.size() == 0)
-        throw runtime_error("Tried to parse empty line in FileParse_Char2D(ifstream&), check number of testcases again");
+    string line = GetLineFromStream(fin, "FileParse_Char2D");
 
     // Erase any leading/trailing brackets that should be 
     if (line[0] == '[')
@@ -289,26 +274,27 @@ vector<vector<char>> FileParse_Char2D(ifstream& fin) {
     if (line.back() == ']')
         line.pop_back();
 
+    vector<vector<char>> res;
     stringstream ssOuter(line);
     string itemOuter;
 
-    vector<vector<char>> res;
     // Outer loop processes takes a row at a time
     while (getline(ssOuter, itemOuter, ']')) {
         if (itemOuter.size() && itemOuter[0] == ',')
             itemOuter.erase(itemOuter.begin());
 
+        vector<char> row;
         stringstream ssInner(itemOuter);
         string itemInner;
 
-        vector<char> row;
         // Inner loop processes individual elements
         while (getline(ssInner, itemInner, ',')) {
-            while (itemInner.size() &&
-                  (itemInner[0] == '[' || itemInner[0] == ' ' ||
-                   itemInner[0] == '"' || itemInner[0] == '\''))
+            while (itemInner.size() && itemInner[0] == ' ')
                 itemInner.erase(itemInner.begin());
             
+            // Remove any leading/trailing "s
+            if (itemInner.size() && itemInner[0] == '"')
+                itemInner.erase(itemInner.begin());
             if (itemInner.back() == '"')
                 itemInner.pop_back();
             

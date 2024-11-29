@@ -106,3 +106,25 @@ If you have commented this line, or expect no more input, your code is still exe
 
 ## I made changes to the library, but its not reflecting in execution.
 Did you compile it?
+
+## Why do I have to encase all strings/chars in ""?
+Although support for single inverted commas, and nothing at all (ie. `'Hello'`, or `Hello`) is possible, it's not done in the event that a string input contains the characters " or ' at the beginning of the input.
+
+ex: `"Hello`
+
+It is not possible to determine in this case what pattern the user is following. Hence, it is safer to wrap all strings around 2 "s
+
+ex: `""Hello"`
+
+This format allows the functions to safely remove the starting and ending "s, leaving the string untouched
+
+#### To change what character should encase a string (ex: ', ", `), simply change it in the innermost while loops, where they are removed
+```cpp
+// Remove starting and ending "s
+if (item.size() && item[0] == '"')
+    item.erase(item.begin());
+if (item.back() == '"')
+    item.pop_back();
+```
+
+Change it, recompile the library, and you're good to go!
