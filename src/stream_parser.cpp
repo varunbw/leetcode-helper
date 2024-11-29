@@ -20,7 +20,7 @@ void ValidateInputStream(ifstream& inp, string callerFuncName) {
 string GetLineFromStream(ifstream& inp, string callerFuncName) {
 
     string res;
-    while(inp.peek() == '\n')
+    while (inp.peek() == '\n')
         inp.ignore();
     
     getline(inp, res);
@@ -42,19 +42,22 @@ string GetLineFromStream(ifstream& inp, string callerFuncName) {
 vector<int> FileParse_Int1D(ifstream& inp) {
 
     ValidateInputStream(inp, "FileParse_Int1D");
+    string line = GetLineFromStream(inp, "FileParse_Int1D");
+
+    if (line[0] == '[')
+        line.erase(line.begin());
+    if (line.back() == ']')
+        line.pop_back();
 
     vector<int> res;
-    
-    string inputString = GetLineFromStream(inp, "FileParse_Int1D");
-
-    inputString.erase(inputString.begin());
-    inputString.pop_back();
-
-    stringstream ss(inputString);
+    stringstream ss(line);
     string item;
 
-    while (getline(ss, item, ','))
+    while (getline(ss, item, ',')) {
+        while (item.size() && item[0] == ' ')
+            item.erase(item.begin());
         res.push_back(stoi(item));
+    }
     
     return res;
 }
@@ -71,20 +74,15 @@ vector<int> FileParse_Int1D(ifstream& inp) {
 vector<vector<int>> FileParse_Int2D(ifstream& inp) {
 
     ValidateInputStream(inp, "FileParse_Int2D");
+    string line = GetLineFromStream(inp, "FileParse_Int2D");
+
+    if (line[0] == '[')
+        line.erase(line.begin());
+    if (line.back() == ']')
+        line.pop_back();
 
     vector<vector<int>> res;
-    string inputString;
-    if(inp.peek() == '\n')
-        inp.ignore();
-    getline(inp, inputString);
-
-    if (inputString.size() == 0)
-        throw runtime_error("Tried to parse empty line in FileParse_Int2D(ifstream&), check number of testcases again");
-
-    inputString.erase(inputString.begin());
-    inputString.pop_back();
-
-    stringstream ssOuter(inputString);
+    stringstream ssOuter(line);
     string itemOuter;
 
     while (getline(ssOuter, itemOuter, ']')) {
@@ -92,11 +90,10 @@ vector<vector<int>> FileParse_Int2D(ifstream& inp) {
             itemOuter.erase(itemOuter.begin());
 
         vector<int> row;
-
         stringstream ssInner(itemOuter);
         string itemInner;
 
-        while(getline(ssInner, itemInner, ',')) {
+        while (getline(ssInner, itemInner, ',')) {
             while (itemInner[0] == '[' || itemInner[0] == ' ')
                 itemInner.erase(itemInner.begin());
 
@@ -117,30 +114,31 @@ vector<vector<int>> FileParse_Int2D(ifstream& inp) {
 
     This works with the following formats only:
         ["Hello","World"]
+        ['Hello','World']
         [Hello,World]
 */
 vector<string> FileParse_String1D(ifstream& inp) {
 
     ValidateInputStream(inp, "FileParse_String1D");
+    string line = GetLineFromStream(inp, "FileParse_String1D");
+
+    if (line[0] == '[')
+        line.erase(line.begin());
+    if (line.back() == ']')
+        line.pop_back();
 
     vector<string> res;
-    string inputString;
-    if(inp.peek() == '\n')
-        inp.ignore();
-    getline(inp, inputString);
-
-    if (inputString.size() == 0)
-        throw runtime_error("Tried to parse empty line in FileParse_String1D(ifstream&), check number of testcases again");
-
-    inputString.erase(inputString.begin());
-    inputString.pop_back();
-
-    stringstream ss(inputString);
+    stringstream ss(line);
     string item;
 
-    while(getline(ss, item, ',')) {
-        while (item[0] == '"' || item[0] == ' ')
+    while (getline(ss, item, ',')) {
+        // Remove any whitespace
+        while (item.size() && item[0] == ' ')
             item.erase(item.begin());
+        
+        if (item.size() && (item[0] == '"' || item[0] == '\''))
+            item.erase(item.begin());
+
         if (item.back() == '"')
             item.pop_back();
 
@@ -165,18 +163,18 @@ vector<vector<string>> FileParse_String2D(ifstream& inp) {
     ValidateInputStream(inp, "FileParse_String2D");
 
     vector<vector<string>> res;
-    string inputString;
+    string line;
     if (inp.peek() == '\n')
         inp.ignore();
-    getline(inp, inputString);
+    getline(inp, line);
 
-    if (inputString.size() == 0)
+    if (line.size() == 0)
         throw runtime_error("Tried to parse empty line in FileParse_String2D(ifstream&), check number of testcases again");
     
-    inputString.erase(inputString.begin());
-    inputString.pop_back();
+    line.erase(line.begin());
+    line.pop_back();
 
-    stringstream ssOuter(inputString);
+    stringstream ssOuter(line);
     string itemOuter;
 
     while (getline(ssOuter, itemOuter, ']')) {
