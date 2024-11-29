@@ -1,7 +1,14 @@
 #include <bits/stdc++.h>
 #include "../include/lch.h"
 
-
+/*
+    @brief Perform basic error checking on the input string
+    @param
+    `fin` The input file stream
+    
+    `callerFuncName` The name of the function to print in error messages
+    @return None
+*/
 void ValidateInputStream(ifstream& fin, string callerFuncName) {
     
     if (fin.is_open() == false)
@@ -17,10 +24,24 @@ void ValidateInputStream(ifstream& fin, string callerFuncName) {
 }
 
 
+/*
+    @brief Get a single line from the input file stream
+    @param
+    `fin` The input file stream
+    
+    `callerFuncName` The name of the function to print in error messages
+
+    @return Fetched line
+
+    This same code was being reused everywhere, so just put it in a function.
+    Other than that, this doesn't really do anything special
+*/
 string GetLineFromStream(ifstream& fin, string callerFuncName) {
 
     string res;
-    while (fin.peek() == '\n')
+
+    // Remove any newline character left in the buffer
+    if (fin.peek() == '\n')
         fin.ignore();
     
     getline(fin, res);
@@ -44,6 +65,7 @@ vector<int> FileParse_Int1D(ifstream& fin) {
     ValidateInputStream(fin, "FileParse_Int1D");
     string line = GetLineFromStream(fin, "FileParse_Int1D");
 
+    // Erase any leading/trailing brackets that ideally should be there
     if (line[0] == '[')
         line.erase(line.begin());
     if (line.back() == ']')
@@ -76,6 +98,7 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
     ValidateInputStream(fin, "FileParse_Int2D");
     string line = GetLineFromStream(fin, "FileParse_Int2D");
 
+    // Erase any leading/trailing brackets that ideally should be there
     if (line[0] == '[')
         line.erase(line.begin());
     if (line.back() == ']')
@@ -85,6 +108,9 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
     stringstream ssOuter(line);
     string itemOuter;
 
+    // TODO try-catch handling for stoi()
+
+    // Outer loop fetches one row at a time
     while (getline(ssOuter, itemOuter, ']')) {
         if (itemOuter[0] == ',')
             itemOuter.erase(itemOuter.begin());
@@ -93,6 +119,7 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
         stringstream ssInner(itemOuter);
         string itemInner;
 
+        // Inner loop processes each element
         while (getline(ssInner, itemInner, ',')) {
             while (itemInner[0] == '[' || itemInner[0] == ' ')
                 itemInner.erase(itemInner.begin());
