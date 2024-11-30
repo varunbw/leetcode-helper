@@ -24,6 +24,9 @@ git clone https://github.com/varunbw/leetcode-helper.git
 # Usage
 
 ## Compiling library
+
+The final compiled library is not included in the repo. You can compile it by running these commands when in the `lib/` directory in the console
+
 #### Linux
 ```bash
 ./compileLib.sh
@@ -34,6 +37,7 @@ bash ./compileLib.sh
 ```
 
 ## Running the file
+You can directly use the `run.sh` script as follows
 #### Linux
 ```bash
 ./run.sh
@@ -42,9 +46,10 @@ bash ./compileLib.sh
 ```bash
 bash ./run.sh
 ```
+#### Compile command
 The base command for compiling with g++ and linking the library correctly is as follows:
 ```bash
-g++ main.cpp -Llib -llch -std=c++17
+g++ main.cpp -Llib -llch
 ```
 
 The command used in `run.sh` is:
