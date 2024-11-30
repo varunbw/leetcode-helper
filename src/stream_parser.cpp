@@ -78,7 +78,14 @@ vector<int> FileParse_Int1D(ifstream& fin) {
     while (getline(ss, item, ',')) {
         while (item.size() && item[0] == ' ')
             item.erase(item.begin());
-        res.push_back(stoi(item));
+        
+        try {
+            res.push_back(stoi(item));
+        }
+        catch (invalid_argument err) {
+            cout << "[ERROR] FileParse_Int1D: Invalid argument, tried to convert '" << item << "' to int\n";
+            exit(-1);
+        }
     }
     
     return res;
@@ -124,7 +131,13 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
             while (itemInner[0] == '[' || itemInner[0] == ' ')
                 itemInner.erase(itemInner.begin());
 
-            row.push_back(stoi(itemInner));  
+            try {
+                row.push_back(stoi(itemInner));
+            }
+            catch (invalid_argument err) {
+                cout << "[ERROR] FileParse_Int2D: Invalid argument, tried to convert '" << itemInner << "' to int\n";
+                exit(-1);
+            }
         }
         
         res.push_back(row);
