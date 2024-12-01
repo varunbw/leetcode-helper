@@ -12,13 +12,25 @@
 void ValidateInputStream(ifstream& fin, string callerFuncName) {
     
     if (fin.is_open() == false)
-        throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream not open");
+        throw runtime_error(
+            RED_START +
+            string("[ERROR]: ") + callerFuncName + ": Input stream not open" +
+            RESET_COLOR
+        );
 
     if (fin.fail())
-        throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream failed due to some reason");
+        throw runtime_error(
+            RED_START +
+            string("[ERROR]: ") + callerFuncName + ": Input stream failed due to some reason" +
+            RESET_COLOR
+        );
 
     if (fin.eof())
-        throw runtime_error("[ERROR]: " + callerFuncName + ": Input stream at EOF, check number of testcases again");
+        throw runtime_error(
+            RED_START +
+            string("[ERROR]: ") + callerFuncName + ": Input stream at EOF, check number of testcases again" +
+            RESET_COLOR
+        );
     
     return;
 }
@@ -47,7 +59,11 @@ string GetLineFromStream(ifstream& fin, string callerFuncName) {
     getline(fin, res);
 
     if (res.size() == 0)
-        throw runtime_error("[ERROR]: " + callerFuncName + ": Tried to parse empty line in, check number of testcases again");
+        throw runtime_error(
+            RED_START +
+            string("[ERROR]: ") + callerFuncName + ": Tried to parse empty line in, check number of testcases again" +
+            RESET_COLOR
+        );
 
     return res;
 }
@@ -83,7 +99,9 @@ vector<int> FileParse_Int1D(ifstream& fin) {
             res.push_back(stoi(item));
         }
         catch (invalid_argument err) {
-            cout << "[ERROR] FileParse_Int1D: Invalid argument, tried to convert '" << item << "' to int\n";
+            cout << RED_START <<
+                "[ERROR] FileParse_Int1D: Invalid argument, tried to convert '" << item << "' to int" <<
+                RESET_COLOR << '\n';
             exit(-1);
         }
     }
@@ -115,8 +133,6 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
     stringstream ssOuter(line);
     string itemOuter;
 
-    // TODO try-catch handling for stoi()
-
     // Outer loop fetches one row at a time
     while (getline(ssOuter, itemOuter, ']')) {
         if (itemOuter[0] == ',')
@@ -135,7 +151,9 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
                 row.push_back(stoi(itemInner));
             }
             catch (invalid_argument err) {
-                cout << "[ERROR] FileParse_Int2D: Invalid argument, tried to convert '" << itemInner << "' to int\n";
+                cout << RED_START <<
+                    "[ERROR] FileParse_Int2D: Invalid argument, tried to convert '" << itemInner << "' to int" <<
+                    RESET_COLOR << '\n';
                 exit(-1);
             }
         }
