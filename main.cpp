@@ -46,6 +46,14 @@ int main(int argc, char** argv) {
         // vector<vector<string>> grid = FileParse_String2D(fin);
         // Print2DVector(grid); cout << "\n";
 
+        // -- 1D char
+        vector<char> vec = FileParse_Char1D(fin);
+        Print1DVector(vec); cout << '\n';
+
+        // -- 2D char
+        // vector<vector<char>> grid = FileParse_Char2D(fin);
+        // Print2DVector(grid); cout << '\n';
+
         // -- Linked List
         // vector<int> vec = FileParse_Int1D(fin);
         // ListNode* head = CreateLinkedList(vec);
