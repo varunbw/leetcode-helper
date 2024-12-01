@@ -1,7 +1,8 @@
-#ifndef MY_LIBRARY
-#define MY_LIBRARY
+#ifndef LCH_LIBRARY
+#define LCH_LIBRARY
 
 #include <bits/stdc++.h>
+#include "text_colors.h"
 using namespace std;
 
 
@@ -80,6 +81,8 @@ vector<char> FileParse_Char1D(ifstream& inp);
 */
 vector<vector<char>> FileParse_Char2D(ifstream& inp);
 
+
+
 // -- Input Parsing - Through command line arguments
 // These aren't really ideal, use the file parsers above
 /*
@@ -118,6 +121,7 @@ vector<vector<int>> ArgsParse_Int2D(const int, char**, const int);
     Works on space separated values as well as a single value like this ["hello world","checking","1234"]
 */
 vector<string> ArgsParse_String1D(const int, char**, const int);
+
 
 
 // -- Vector Printing
