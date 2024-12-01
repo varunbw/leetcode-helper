@@ -354,7 +354,7 @@ vector<vector<char>> FileParse_Char2D(ifstream& fin) {
 
         // Inner loop processes individual elements
         while (getline(ssInner, itemInner, ',')) {
-            while (itemInner.size() && itemInner[0] == ' ')
+            while (itemInner.size() && (itemInner[0] == ' ' || itemInner[0] == '['))
                 itemInner.erase(itemInner.begin());
             
             // Remove any leading/trailing "s
