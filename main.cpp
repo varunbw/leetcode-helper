@@ -47,8 +47,8 @@ int main(int argc, char** argv) {
         // Print2DVector(grid); cout << "\n";
 
         // -- 1D char
-        vector<char> vec = FileParse_Char1D(fin);
-        Print1DVector(vec); cout << '\n';
+        // vector<char> vec = FileParse_Char1D(fin);
+        // Print1DVector(vec); cout << '\n';
 
         // -- 2D char
         // vector<vector<char>> grid = FileParse_Char2D(fin);

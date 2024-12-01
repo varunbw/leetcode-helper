@@ -300,6 +300,13 @@ vector<char> FileParse_Char1D(ifstream& fin) {
         if (item.back() == '"')
             item.pop_back();
         
+        // Warn user if element is more than 1 letter long
+        const size_t itemSize = item.size();
+        if (itemSize != 1)
+            cerr << YELLOW_START <<
+            "[WARNING] FileParse_Char1D: Item \"" << item << "\" is of size " << itemSize << " when expected size is 1" <<
+            RESET_COLOR << '\n';
+        
         // Add the 0th element of item, which happens to be the entire thing
         res.push_back(item[0]);
     }
@@ -355,6 +362,13 @@ vector<vector<char>> FileParse_Char2D(ifstream& fin) {
                 itemInner.erase(itemInner.begin());
             if (itemInner.back() == '"')
                 itemInner.pop_back();
+
+            // Warn user if element is more than 1 letter long
+            const size_t itemSize = itemInner.size();
+            if (itemSize != 1)
+                cerr << YELLOW_START <<
+                "[WARNING] FileParse_Char2D: Item \"" << itemInner << "\" is of size " << itemSize << " when expected size is 1" <<
+                RESET_COLOR << '\n';
             
             row.push_back(itemInner[0]);
         }
