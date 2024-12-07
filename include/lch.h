@@ -301,15 +301,20 @@ TimePoint TimeNow();
     @param `precision` Whether to print microseconds, milliseconds, or seconds elapsed since start (default: MILLISECONDS)
     @param `division` What to divide the result of end-start by, useful for calculating average time in loops (default: 1)
     @return String of format "`Time elapsed: {time} {unit}`\n"
+
+    NOTE: If you want to pass a division parameter, you also need to pass a TimePrecision parameter, you cant skip it
 */
 string TimeElapsed(TimePoint, TimePrecision = TimePrecision::MILLISECONDS, int = 1);
 
 /* 
-    @brief Calculates the time difference between `start` and `end`
-    @param start Start of the interval
-    @param end End of the interval
-    @param division What to divide the result of end-start by, useful for calculating average time in loops
-    @return String of format "Time elapsed: {time} us\n"
+    @brief Calculates the time difference between `start` and current time
+    @param `start` Start of the interval
+    @param `end` End of the interval
+    @param `precision` Whether to print microseconds, milliseconds, or seconds elapsed since start (default: MILLISECONDS)
+    @param `division` What to divide the result of end-start by, useful for calculating average time in loops (default: 1)
+    @return String of format "`Time elapsed: {time} {unit}`\n"
+
+    NOTE: If you want  to pass a division parameter, you also need to pass a TimePrecision parameter, you cant skip it
 */
 string TimeElapsed(TimePoint, TimePoint, TimePrecision = TimePrecision::MILLISECONDS, int = 1);
 
