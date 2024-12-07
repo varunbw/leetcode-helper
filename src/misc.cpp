@@ -1,7 +1,4 @@
-#include <bits/stdc++.h>
 #include "../include/lch.h"
-
-using namespace std;
 
 // -- Miscellaneous functions
 /*

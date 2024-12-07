@@ -1,8 +1,4 @@
-#include <bits/stdc++.h>
 #include "../include/lch.h"
-
-using namespace std;
-
 
 // -- Linked List
 /*
@@ -16,7 +12,7 @@ ListNode* CreateLinkedList(const vector<int>& vec) {
     allocatedListNodes.push_back(head);
     ListNode* prevNode = head;
 
-    for (const int& num : vec) {
+    for (const int num : vec) {
         ListNode* newNode = new ListNode(num);
         allocatedListNodes.push_back(newNode);
 

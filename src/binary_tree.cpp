@@ -1,7 +1,12 @@
-#include <bits/stdc++.h>
 #include "../include/lch.h"
 
-using namespace std;
+using std::cout;
+using std::cerr;
+using std::endl;
+
+using std::string;
+using std::vector;
+using std::queue;
 
 // -- Binary Tree
 /*

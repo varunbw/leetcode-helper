@@ -1,7 +1,11 @@
-#include <bits/stdc++.h>
 #include "../include/lch.h"
 
-using namespace std;
+using std::cerr;
+using std::cout;
+
+using std::vector;
+using std::set;
+using std::map;
 
 /*
     @brief Creates a graph from the given edge list
