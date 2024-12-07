@@ -283,19 +283,26 @@ void DeleteAllocatedNodes();
 // -- Performance Counters
 typedef std::chrono::_V2::system_clock::time_point TimePoint;
 
+enum TimePrecision {
+    MICROSECONDS = 1,
+    MILLISECONDS = 2,
+    SECONDS = 3
+};
+
 /* 
     @brief Gives the current system time in microseconds
     @return Current system time in microseconds
 */
-TimePoint TimeNow_Microseconds();
+TimePoint TimeNow();
 
 /* 
     @brief Calculates the time difference between `start` and current time
-    @param start Start of the interval
-    @param division What to divide the result of end-start by, useful for calculating average time in loops
-    @return String of format "Time elapsed: {time} us\n"
+    @param `start` Start of the interval
+    @param `precision` Whether to print microseconds, milliseconds, or seconds elapsed since start (default: MILLISECONDS)
+    @param `division` What to divide the result of end-start by, useful for calculating average time in loops (default: 1)
+    @return String of format "`Time elapsed: {time} {unit}`\n"
 */
-string TimeElapsed_Microseconds(TimePoint, int = 1);
+string TimeElapsed(TimePoint, TimePrecision = TimePrecision::MILLISECONDS, int = 1);
 
 /* 
     @brief Calculates the time difference between `start` and `end`
@@ -304,7 +311,7 @@ string TimeElapsed_Microseconds(TimePoint, int = 1);
     @param division What to divide the result of end-start by, useful for calculating average time in loops
     @return String of format "Time elapsed: {time} us\n"
 */
-string TimeElapsed_Microseconds(TimePoint, TimePoint, int = 1);
+string TimeElapsed(TimePoint, TimePoint, TimePrecision = TimePrecision::MILLISECONDS, int = 1);
 
 
 #endif
