@@ -1,14 +1,16 @@
-#include <bits/stdc++.h>
 #include "../include/lch.h"
 
-using namespace std;
+// Only these are needed frequently
+using std::string;
+using std::chrono::duration;
+using std::invalid_argument;
 
 /* 
     @brief Gives the current system time in microseconds
     @return Current system time in microseconds
 */
 TimePoint TimeNow() {
-    return chrono::high_resolution_clock::now();
+    return std::chrono::high_resolution_clock::now();
 }
 
 /* 
@@ -31,21 +33,21 @@ string TimeElapsed(TimePoint start, TimePrecision precision, int division) {
 
     string res;
     if (precision ==  TimePrecision::MICROSECONDS) {
-        chrono::duration<double, micro> duration = TimeNow() - start;
+        duration<double, std::micro> duration = TimeNow() - start;
         double elapsed = duration.count() / division;
-        res = string("Time elapsed: " + to_string(elapsed) + " us\n");
+        res = string("Time elapsed: " + std::to_string(elapsed) + " us\n");
     }
     
     else if (precision ==  TimePrecision::MILLISECONDS) {
-        chrono::duration<double, milli> duration = TimeNow() - start;
+        duration<double, std::milli> duration = TimeNow() - start;
         double elapsed = duration.count() / division;
-        res = string("Time elapsed: " + to_string(elapsed) + " ms\n");
+        res = string("Time elapsed: " + std::to_string(elapsed) + " ms\n");
     }
 
     else if (precision ==  TimePrecision::SECONDS) {
-        chrono::duration<double> duration = TimeNow() - start;
+        duration<double> duration = TimeNow() - start;
         double elapsed = duration.count() / division;
-        res = string("Time elapsed: " + to_string(elapsed) + " s\n");
+        res = string("Time elapsed: " + std::to_string(elapsed) + " s\n");
     }
 
     else {
@@ -81,21 +83,21 @@ string TimeElapsed(TimePoint start, TimePoint end, TimePrecision precision, int 
 
     string res;
     if (precision ==  TimePrecision::MICROSECONDS) {
-        chrono::duration<double, micro> duration = end - start;
+        duration<double, std::micro> duration = end - start;
         double elapsed = duration.count() / division;
-        res = string("Time elapsed: " + to_string(elapsed) + " us\n");
+        res = string("Time elapsed: " + std::to_string(elapsed) + " us\n");
     }
     
     else if (precision ==  TimePrecision::MILLISECONDS) {
-        chrono::duration<double, milli> duration = end - start;
+        duration<double, std::milli> duration = end - start;
         double elapsed = duration.count() / division;
-        res = string("Time elapsed: " + to_string(elapsed) + " ms\n");
+        res = string("Time elapsed: " + std::to_string(elapsed) + " ms\n");
     }
 
     else if (precision ==  TimePrecision::SECONDS) {
-        chrono::duration<double> duration = end - start;
+        duration<double> duration = end - start;
         double elapsed = duration.count() / division;
-        res = string("Time elapsed: " + to_string(elapsed) + " s\n");
+        res = string("Time elapsed: " + std::to_string(elapsed) + " s\n");
     }
 
     else {
