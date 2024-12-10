@@ -17,8 +17,11 @@ using std::map;
 GraphNode* CreateGraph(const vector<vector<int>>& edges) {
 
     if (edges.size() == 0) {
-        cerr << "Cannot make graph from empty list\n";
-        exit(0);
+        throw std::invalid_argument(
+            RED_START +
+            string("[ERROR] CreateGraph(const std::vector<std::vector<int>>&): Empty vector passed as argument") +
+            RESET_COLOR
+        );
     }
 
     set<int> values;

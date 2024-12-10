@@ -28,8 +28,11 @@ using std::queue;
 TreeNode* CreateBinaryTree(const vector<string>& nodes) {
 
     if (nodes.empty() || nodes[0] == "null") {
-        cerr << "Tree empty" << endl;
-        return nullptr;
+        throw std::invalid_argument(
+            RED_START +
+            string("[ERROR] CreateBinaryTree(const std::vector<std::string>&): Empty vector passed as argument") +
+            RESET_COLOR
+        );
     }
 
     // Create the root node
