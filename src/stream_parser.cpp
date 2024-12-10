@@ -1,6 +1,16 @@
 #include <bits/stdc++.h>
 #include "../include/lch.h"
 
+using std::vector;
+using std::string;
+using std::stringstream;
+using std::ifstream;
+
+using std::getline;
+
+using std::runtime_error;
+
+
 /*
     @brief Perform basic error checking on the input string
     @param
@@ -98,9 +108,9 @@ vector<int> FileParse_Int1D(ifstream& fin) {
         try {
             res.push_back(stoi(item));
         }
-        catch (invalid_argument err) {
+        catch (runtime_error err) {
             cout << RED_START <<
-                "[ERROR] FileParse_Int1D: Invalid argument, tried to convert '" << item << "' to int" <<
+                "[ERROR] FileParse_Int1D: Tried to convert '" << item << "' to int" <<
                 RESET_COLOR << '\n';
             exit(-1);
         }
@@ -150,9 +160,9 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
             try {
                 row.push_back(stoi(itemInner));
             }
-            catch (invalid_argument err) {
+            catch (runtime_error err) {
                 cout << RED_START <<
-                    "[ERROR] FileParse_Int2D: Invalid argument, tried to convert '" << itemInner << "' to int" <<
+                    "[ERROR] FileParse_Int2D: Tried to convert '" << itemInner << "' to int" <<
                     RESET_COLOR << '\n';
                 exit(-1);
             }

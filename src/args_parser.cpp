@@ -1,7 +1,13 @@
 #include <bits/stdc++.h>
 #include "../include/lch.h"
 
-using namespace std;
+using std::vector;
+using std::string;
+using std::stringstream;
+
+using std::getline;
+using std::stoi;
+
 
 // -- Input Parsing
 /*

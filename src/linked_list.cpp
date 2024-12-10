@@ -1,5 +1,7 @@
 #include "../include/lch.h"
 
+using std::vector;
+
 // -- Linked List
 /*
     @brief Does what it says

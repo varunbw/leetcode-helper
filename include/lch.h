@@ -3,59 +3,62 @@
 
 #include <bits/stdc++.h>
 #include "text_colors.h"
-using namespace std;
 
+using std::cout;
+using std::cin;
+using std::cerr;
+using std::endl;
 
 // -- Input Parsing - Through input file stream
 /*
-    @brief Parse inputs into a vector<int> from the given stream `inp`
+    @brief Parse inputs into a std::vector<int> from the given stream `inp`
     @param `inp` The input file stream
-    @return Parsed input in a vector<int>
+    @return Parsed input in a std::vector<int>
 
     This works with the following format only:
         [1,2,3,4,...]
 */
-vector<int> FileParse_Int1D(ifstream& fin);
+std::vector<int> FileParse_Int1D(std::ifstream& fin);
 
 /*
-    @brief Parse inputs into a vector<vector<int>> from the given stream `inp`
+    @brief Parse inputs into a std::vector<std::vector<int>> from the given stream `inp`
     @param `inp` The input file stream
-    @return Parsed input in a vector<vector<int>>
+    @return Parsed input in a std::vector<std::vector<int>>
 
     This works with the following format only:
         [[1,2,3,4,...],[5,6,7,8,...],...]
 
     IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
 */
-vector<vector<int>> FileParse_Int2D(ifstream& fin);
+std::vector<std::vector<int>> FileParse_Int2D(std::ifstream& fin);
 
 /*
-    @brief Parse inputs into a vector<string> from the given stream `inp`
+    @brief Parse inputs into a std::vector<std::string> from the given stream `inp`
     @param `inp` The input file stream
-    @return Parsed input in a vector<string>
+    @return Parsed input in a std::vector<std::string>
 
     This works with the following formats only:
         ["Hello","World"]
         [Hello,World]
 */
-vector<string> FileParse_String1D(ifstream& fin);
+std::vector<std::string> FileParse_String1D(std::ifstream& fin);
 
 /*
-    @brief Parse inputs into a vector<vector<string>> from the given stream `inp`
+    @brief Parse inputs into a std::vector<std::vector<std::string>> from the given stream `inp`
     @param `inp` The input file stream
-    @return Parsed input in a vector<vector<string>>
+    @return Parsed input in a std::vector<std::vector<std::string>>
 
     This works with the following format only:
         [["Hello","World"],["This is ", "a test :)"]]
 
     IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
 */
-vector<vector<string>> FileParse_String2D(ifstream& fin);
+std::vector<std::vector<std::string>> FileParse_String2D(std::ifstream& fin);
 
 /*
-    @brief Parse inputs into a vector<char> from the given stream `inp`
+    @brief Parse inputs into a std::vector<char> from the given stream `inp`
     @param `inp` The input file stream
-    @return Parsed input in a vector<char>
+    @return Parsed input in a std::vector<char>
 
     This works with the following formats
         ["a","b","c","d","e"]
@@ -65,12 +68,12 @@ vector<vector<string>> FileParse_String2D(ifstream& fin);
 
     You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
 */
-vector<char> FileParse_Char1D(ifstream& fin);
+std::vector<char> FileParse_Char1D(std::ifstream& fin);
 
 /*
-    @brief Parse inputs into a vector<vector<char>> from the given stream `inp`
+    @brief Parse inputs into a std::vector<std::vector<char>> from the given stream `inp`
     @param `inp` The input file stream
-    @return Parsed input in a vector<vector<char>>
+    @return Parsed input in a std::vector<std::vector<char>>
 
     This works with the following formats
         [["a","b","c","d","e"],['a','b','c','d','e']]
@@ -79,54 +82,54 @@ vector<char> FileParse_Char1D(ifstream& fin);
     You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
     IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
 */
-vector<vector<char>> FileParse_Char2D(ifstream& fin);
+std::vector<std::vector<char>> FileParse_Char2D(std::ifstream& fin);
 
 
 
 // -- Input Parsing - Through command line arguments
 // These aren't really ideal, use the file parsers above
 /*
-    @brief Parse inputs as ints from the command line, and put them in a vector<int>
+    @brief Parse inputs as ints from the command line, and put them in a std::vector<int>
     @param argc argc in main()
     @param argv argv in main()
     @param offset Offset to start parsing from from argv (offset 0 starts from argv[1])
-    @return Parsed input in vector<int> format
+    @return Parsed input in std::vector<int> format
 
     This works on space separated numbers as well as
     a single argument as follows [1,2,3,4]
 */
-vector<int> ArgsParse_Int1D(const int argc, char** argv, const int offset);
+std::vector<int> ArgsParse_Int1D(const int argc, char** argv, const int offset);
 
 /*
-    @brief Parse inputs as ints from the command line, and put them in a vector<vector<int>>
+    @brief Parse inputs as ints from the command line, and put them in a std::vector<std::vector<int>>
     @param argc argc in main()
     @param argv argv in main()
     @param offset Offset to start parsing from from argv (offset 0 starts from argv[1])
-    @return Parsed input in vector<vector<int>> format
+    @return Parsed input in std::vector<std::vector<int>> format
 
     This works with the following format only:
         [[1,2,3],[4,5,6],[7,8,9]].
 
-    The above argument is a single string
+    The above argument is a single std::string
 */
-vector<vector<int>> ArgsParse_Int2D(const int argc, char** argv, const int offset);
+std::vector<std::vector<int>> ArgsParse_Int2D(const int argc, char** argv, const int offset);
 
 /*
-    @brief Parse inputs as ints from the command line, and put them in a vector<string>
+    @brief Parse inputs as ints from the command line, and put them in a std::vector<std::string>
     @param argc argc in main()
     @param argv argv in main()
     @param offset Offset to start parsing from from argv (offset 0 starts from argv[1])
-    @return Parsed input in vector<string> format
+    @return Parsed input in std::vector<std::string> format
 
     Works on space separated values as well as a single value like this ["hello world","checking","1234"]
 */
-vector<string> ArgsParse_String1D(const int argc, char** argv, const int offset);
+std::vector<std::string> ArgsParse_String1D(const int argc, char** argv, const int offset);
 
 
 
 // -- Vector Printing
 template <typename T>
-void Print1DVector(vector<T> vec) {
+void Print1DVector(std::vector<T> vec) {
     for (auto ele : vec)
         cout << ele << "  ";
     cout << "\n";
@@ -135,7 +138,7 @@ void Print1DVector(vector<T> vec) {
 }
 
 template <typename T>
-void Print2DVector(vector<vector<T>> vec) {
+void Print2DVector(std::vector<std::vector<T>> vec) {
     for (int i = 0; i < vec.size(); i++) {
         for (int j = 0; j < vec[i].size(); j++) {
             cout << vec[i][j] << " ";
@@ -163,14 +166,14 @@ struct ListNode {
     Not really needed unless you use Address Sanitizer.
     AddrSan will spam memory leak warnings if you don't free dynamically allocated memory
 */
-inline vector<ListNode*> allocatedListNodes;
+inline std::vector<ListNode*> allocatedListNodes;
 
 /*
     @brief Does what it says
     @param vec Vector to convert to a linked list
     @return Head of linked list
 */
-ListNode* CreateLinkedList(const vector<int>& nodes);
+ListNode* CreateLinkedList(const std::vector<int>& nodes);
 
 /*
     @brief Does what it says, prints to std::cout
@@ -196,14 +199,14 @@ struct TreeNode {
     Not really needed unless you use Address Sanitizer.
     AddrSan will spam memory leak warnings if you don't free dynamically allocated memory
 */
-inline vector<TreeNode*> allocatedTreeNodes;
+inline std::vector<TreeNode*> allocatedTreeNodes;
 
 /*
-    @brief Constructs a binary tree out of the given vector
+    @brief Constructs a binary tree out of the given std::vector
     @param nodes The representation of nodes
     @return Root of tree
 
-    Leetcode uses BFS to serialize binary trees into a string.
+    Leetcode uses BFS to serialize binary trees into a std::string.
     ex:   1
          / \
         2   3
@@ -214,7 +217,7 @@ inline vector<TreeNode*> allocatedTreeNodes;
 
     * Check comment in source code for clearer visual representation
 */
-TreeNode* CreateBinaryTree(const vector<string>& nodes);
+TreeNode* CreateBinaryTree(const std::vector<std::string>& nodes);
 
 /* 
     @brief Prints a preorder traversal of the given tree
@@ -227,11 +230,11 @@ void BT_PreorderTraversal(const TreeNode* root);
 // -- Graph
 struct GraphNode {
     int val;
-    vector<GraphNode*> neighbors;
+    std::vector<GraphNode*> neighbors;
 
-    GraphNode() : val(0), neighbors(vector<GraphNode*>()) {}
-    GraphNode(int _val) : val(_val), neighbors(vector<GraphNode*>()) {}
-    GraphNode(int _val, vector<GraphNode*> _neighbours) : val(_val), neighbors(_neighbours) {}
+    GraphNode() : val(0), neighbors(std::vector<GraphNode*>()) {}
+    GraphNode(int _val) : val(_val), neighbors(std::vector<GraphNode*>()) {}
+    GraphNode(int _val, std::vector<GraphNode*> _neighbours) : val(_val), neighbors(_neighbours) {}
 };
 
 /*
@@ -240,16 +243,16 @@ struct GraphNode {
     Not really needed unless you use Address Sanitizer.
     AddrSan will spam memory leak warnings if you don't free dynamically allocated memory
 */
-inline vector<GraphNode*> allocatedGraphNodes;
+inline std::vector<GraphNode*> allocatedGraphNodes;
 
 /*
     @brief Creates a graph from the given edge list
     @param edges Adjacency list
     @return Root of graph
 
-    Each vector<int> in edges is an edge between two nodes.
+    Each std::vector<int> in edges is an edge between two nodes.
 */
-GraphNode* CreateGraph(const vector<vector<int>>& edges);
+GraphNode* CreateGraph(const std::vector<std::vector<int>>& edges);
 
 /*
     @brief Driver for performing a DFS on the given graph
@@ -262,7 +265,7 @@ void G_DFS(const GraphNode* root);
     @param node Node currently being visited
     @param visited Adjacency list
 */
-void G_DFS(const GraphNode* node, set<const GraphNode*>& visited);
+void G_DFS(const GraphNode* node, std::set<const GraphNode*>& visited);
 
 
 
@@ -271,9 +274,9 @@ void G_DFS(const GraphNode* node, set<const GraphNode*>& visited);
 /*
     @brief Frees up the memory of all tree and graph nodes
     Containers referred:
-    - inline vector<ListNode*> allocatedListNodes;
-    - inline vector<TreeNode*> allocatedTreeNodes;
-    - inline vector<GraphNode*> allocatedGraphNodes;
+    - inline std::vector<ListNode*> allocatedListNodes;
+    - inline std::vector<TreeNode*> allocatedTreeNodes;
+    - inline std::vector<GraphNode*> allocatedGraphNodes;
 */
 void DeleteAllocatedNodes();
 
@@ -303,7 +306,7 @@ TimePoint TimeNow();
 
     NOTE: If you want to pass a division parameter, you also need to pass a TimePrecision parameter, you cant skip it
 */
-string TimeElapsed(TimePoint start, TimePrecision precision = TimePrecision::MILLISECONDS, int division = 1);
+std::string TimeElapsed(TimePoint start, TimePrecision precision = TimePrecision::MILLISECONDS, int division = 1);
 
 /* 
     @brief Calculates the time difference between `start` and current time
@@ -315,7 +318,7 @@ string TimeElapsed(TimePoint start, TimePrecision precision = TimePrecision::MIL
 
     NOTE: If you want  to pass a division parameter, you also need to pass a TimePrecision parameter, you cant skip it
 */
-string TimeElapsed(TimePoint start, TimePoint end, TimePrecision precision = TimePrecision::MILLISECONDS, int division = 1);
+std::string TimeElapsed(TimePoint start, TimePoint end, TimePrecision precision = TimePrecision::MILLISECONDS, int division = 1);
 
 
 #endif

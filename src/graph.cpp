@@ -4,6 +4,7 @@ using std::cerr;
 using std::cout;
 
 using std::vector;
+using std::string;
 using std::set;
 using std::map;
 
