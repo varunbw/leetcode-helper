@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -f misc.o binary_tree.o graph.o linked_list.o args_parser.o stream_parser.o perf.o
+rm -f liblch.a misc.o binary_tree.o graph.o linked_list.o args_parser.o stream_parser.o perf.o
 
 SOURCE_FILES="../src/misc.cpp ../src/binary_tree.cpp ../src/graph.cpp ../src/linked_list.cpp ../src/args_parser.cpp ../src/stream_parser.cpp ../src/perf.cpp"
 OBJECT_FILES="misc.o  binary_tree.o  graph.o  linked_list.o  args_parser.o stream_parser.o  perf.o"
