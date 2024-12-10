@@ -1,29 +1,45 @@
 #!/bin/bash
 
-rm -f liblch.a misc.o binary_tree.o graph.o linked_list.o args_parser.o stream_parser.o perf.o
+rm -f liblch.a
 
-SOURCE_FILES="../src/misc.cpp ../src/binary_tree.cpp ../src/graph.cpp ../src/linked_list.cpp ../src/args_parser.cpp ../src/stream_parser.cpp ../src/perf.cpp"
-OBJECT_FILES="misc.o  binary_tree.o  graph.o  linked_list.o  args_parser.o stream_parser.o  perf.o"
+# Array of filenames without paths
+FILES=(
+    "misc"
+    "binary_tree"
+    "graph"
+    "linked_list"
+    "args_parser"
+    "stream_parser"
+    "perf"
+)
+
 LIBRARY_NAME="liblch.a"
 
-# Compile into object files
-COMPILE_CMD="g++ -g -c $SOURCE_FILES -std=c++17 -fsanitize=address"
-$COMPILE_CMD
+# Construct a string of source file paths
+SOURCE_FILES=""
+for FILE in "${FILES[@]}"; do
+    SOURCE_FILES+=" ../src/$FILE.cpp"
+done
+
+# Compile into object files in one g++ call
+g++ -g -c -std=c++17 -fsanitize=address $SOURCE_FILES
 if [ $? -ne 0 ]; then
     echo "Compilation failed"
     exit 1
 fi
 
+# Create a list of object files
+OBJECT_FILES=$(printf "%s.o " "${FILES[@]}")
+
 # Make the library file
-ARCHIVE_CMD="ar rcs $LIBRARY_NAME $OBJECT_FILES"
-$ARCHIVE_CMD
+ar rcs $LIBRARY_NAME $OBJECT_FILES
 if [ $? -ne 0 ]; then
     echo "Archival failed"
     exit 1
 fi
 
 # Delete object files
-rm -f misc.o binary_tree.o graph.o linked_list.o args_parser.o stream_parser.o perf.o
+rm -f $OBJECT_FILES
 
 if [ $? -eq 0 ]; then
     echo "Library successfully made"
