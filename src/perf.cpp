@@ -1,6 +1,5 @@
 #include "../include/lch.h"
 
-// Only these are needed frequently
 using std::string;
 using std::chrono::duration;
 using std::invalid_argument;

@@ -15,7 +15,7 @@ using namespace std;
     This works with the following format only:
         [1,2,3,4,...]
 */
-vector<int> FileParse_Int1D(ifstream&);
+vector<int> FileParse_Int1D(ifstream& fin);
 
 /*
     @brief Parse inputs into a vector<vector<int>> from the given stream `inp`
@@ -27,7 +27,7 @@ vector<int> FileParse_Int1D(ifstream&);
 
     IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
 */
-vector<vector<int>> FileParse_Int2D(ifstream&);
+vector<vector<int>> FileParse_Int2D(ifstream& fin);
 
 /*
     @brief Parse inputs into a vector<string> from the given stream `inp`
@@ -38,7 +38,7 @@ vector<vector<int>> FileParse_Int2D(ifstream&);
         ["Hello","World"]
         [Hello,World]
 */
-vector<string> FileParse_String1D(ifstream&);
+vector<string> FileParse_String1D(ifstream& fin);
 
 /*
     @brief Parse inputs into a vector<vector<string>> from the given stream `inp`
@@ -50,7 +50,7 @@ vector<string> FileParse_String1D(ifstream&);
 
     IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
 */
-vector<vector<string>> FileParse_String2D(ifstream&);
+vector<vector<string>> FileParse_String2D(ifstream& fin);
 
 /*
     @brief Parse inputs into a vector<char> from the given stream `inp`
@@ -65,7 +65,7 @@ vector<vector<string>> FileParse_String2D(ifstream&);
 
     You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
 */
-vector<char> FileParse_Char1D(ifstream& inp);
+vector<char> FileParse_Char1D(ifstream& fin);
 
 /*
     @brief Parse inputs into a vector<vector<char>> from the given stream `inp`
@@ -79,7 +79,7 @@ vector<char> FileParse_Char1D(ifstream& inp);
     You may leave spaces here anywhere, but in case you dont see the expected output, just stick to one of the above formats
     IMPORTANT: Keep the entire 2D grid in one line as seen above, don't split the rows into different lines
 */
-vector<vector<char>> FileParse_Char2D(ifstream& inp);
+vector<vector<char>> FileParse_Char2D(ifstream& fin);
 
 
 
@@ -95,7 +95,7 @@ vector<vector<char>> FileParse_Char2D(ifstream& inp);
     This works on space separated numbers as well as
     a single argument as follows [1,2,3,4]
 */
-vector<int> ArgsParse_Int1D(const int, char**, const int);
+vector<int> ArgsParse_Int1D(const int argc, char** argv, const int offset);
 
 /*
     @brief Parse inputs as ints from the command line, and put them in a vector<vector<int>>
@@ -109,7 +109,7 @@ vector<int> ArgsParse_Int1D(const int, char**, const int);
 
     The above argument is a single string
 */
-vector<vector<int>> ArgsParse_Int2D(const int, char**, const int);
+vector<vector<int>> ArgsParse_Int2D(const int argc, char** argv, const int offset);
 
 /*
     @brief Parse inputs as ints from the command line, and put them in a vector<string>
@@ -120,7 +120,7 @@ vector<vector<int>> ArgsParse_Int2D(const int, char**, const int);
 
     Works on space separated values as well as a single value like this ["hello world","checking","1234"]
 */
-vector<string> ArgsParse_String1D(const int, char**, const int);
+vector<string> ArgsParse_String1D(const int argc, char** argv, const int offset);
 
 
 
@@ -170,13 +170,13 @@ inline vector<ListNode*> allocatedListNodes;
     @param vec Vector to convert to a linked list
     @return Head of linked list
 */
-ListNode* CreateLinkedList(const vector<int>&);
+ListNode* CreateLinkedList(const vector<int>& nodes);
 
 /*
     @brief Does what it says, prints to std::cout
     @param head Node to start printing from
 */
-void DisplayLinkedList(const ListNode*);
+void DisplayLinkedList(const ListNode* head);
 
 
 
@@ -214,13 +214,13 @@ inline vector<TreeNode*> allocatedTreeNodes;
 
     * Check comment in source code for clearer visual representation
 */
-TreeNode* CreateBinaryTree(const vector<string>&);
+TreeNode* CreateBinaryTree(const vector<string>& nodes);
 
 /* 
     @brief Prints a preorder traversal of the given tree
     @param root Node to start from
 */
-void BT_PreorderTraversal(const TreeNode*);
+void BT_PreorderTraversal(const TreeNode* root);
 
 
 
@@ -248,23 +248,21 @@ inline vector<GraphNode*> allocatedGraphNodes;
     @return Root of graph
 
     Each vector<int> in edges is an edge between two nodes.
-
-    TODO: Change to vector<pair<int, int>>
 */
-GraphNode* CreateGraph(const vector<vector<int>>&);
+GraphNode* CreateGraph(const vector<vector<int>>& edges);
 
 /*
     @brief Driver for performing a DFS on the given graph
     @param root Node to start the DFS from
 */
-void G_DFS(const GraphNode*);
+void G_DFS(const GraphNode* root);
 
 /*
     @brief Actually performs the DFS
     @param node Node currently being visited
     @param visited Adjacency list
 */
-void G_DFS(const GraphNode*, set<const GraphNode*>&);
+void G_DFS(const GraphNode* node, set<const GraphNode*>& visited);
 
 
 
@@ -283,6 +281,7 @@ void DeleteAllocatedNodes();
 // -- Performance Counters
 typedef std::chrono::_V2::system_clock::time_point TimePoint;
 
+// Used to determine what format to print, in TimeElapsed()
 enum TimePrecision {
     MICROSECONDS = 1,
     MILLISECONDS = 2,
@@ -304,7 +303,7 @@ TimePoint TimeNow();
 
     NOTE: If you want to pass a division parameter, you also need to pass a TimePrecision parameter, you cant skip it
 */
-string TimeElapsed(TimePoint, TimePrecision = TimePrecision::MILLISECONDS, int = 1);
+string TimeElapsed(TimePoint start, TimePrecision precision = TimePrecision::MILLISECONDS, int division = 1);
 
 /* 
     @brief Calculates the time difference between `start` and current time
@@ -316,7 +315,7 @@ string TimeElapsed(TimePoint, TimePrecision = TimePrecision::MILLISECONDS, int =
 
     NOTE: If you want  to pass a division parameter, you also need to pass a TimePrecision parameter, you cant skip it
 */
-string TimeElapsed(TimePoint, TimePoint, TimePrecision = TimePrecision::MILLISECONDS, int = 1);
+string TimeElapsed(TimePoint start, TimePoint end, TimePrecision precision = TimePrecision::MILLISECONDS, int division = 1);
 
 
 #endif

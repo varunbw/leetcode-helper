@@ -3,16 +3,16 @@
 // -- Linked List
 /*
     @brief Does what it says
-    @param vec Vector to convert to a linked list
+    @param nodes Vector to convert to a linked list
     @return Head of linked list
 */
-ListNode* CreateLinkedList(const vector<int>& vec) {
+ListNode* CreateLinkedList(const vector<int>& nodes) {
 
     ListNode* head = new ListNode;
     allocatedListNodes.push_back(head);
     ListNode* prevNode = head;
 
-    for (const int num : vec) {
+    for (const int num : nodes) {
         ListNode* newNode = new ListNode(num);
         allocatedListNodes.push_back(newNode);
 
