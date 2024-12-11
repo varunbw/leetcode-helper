@@ -88,8 +88,8 @@ string GetLineFromStream(ifstream& fin, string callerFuncName) {
 */
 vector<int> FileParse_Int1D(ifstream& fin) {
 
-    ValidateInputStream(fin, "FileParse_Int1D");
-    string line = GetLineFromStream(fin, "FileParse_Int1D");
+    ValidateInputStream(fin, "FileParse_Int1D(std::ifstream&)");
+    string line = GetLineFromStream(fin, "FileParse_Int1D(std::ifstream&)");
 
     // Erase any leading/trailing brackets that ideally should be there
     if (line[0] == '[')
@@ -130,8 +130,8 @@ vector<int> FileParse_Int1D(ifstream& fin) {
 */
 vector<vector<int>> FileParse_Int2D(ifstream& fin) {
 
-    ValidateInputStream(fin, "FileParse_Int2D");
-    string line = GetLineFromStream(fin, "FileParse_Int2D");
+    ValidateInputStream(fin, "FileParse_Int2D(std::ifstream&)");
+    string line = GetLineFromStream(fin, "FileParse_Int2D(std::ifstream&)");
 
     // Erase any leading/trailing brackets that ideally should be there
     if (line[0] == '[')
@@ -187,8 +187,8 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
 */
 vector<string> FileParse_String1D(ifstream& fin) {
 
-    ValidateInputStream(fin, "FileParse_String1D");
-    string line = GetLineFromStream(fin, "FileParse_String1D");
+    ValidateInputStream(fin, "FileParse_String1D(std::ifstream&)");
+    string line = GetLineFromStream(fin, "FileParse_String1D(std::ifstream&)");
 
     if (line[0] == '[')
         line.erase(line.begin());
@@ -231,8 +231,8 @@ vector<string> FileParse_String1D(ifstream& fin) {
 */
 vector<vector<string>> FileParse_String2D(ifstream& fin) {
 
-    ValidateInputStream(fin, "FileParse_String2D");
-    string line = GetLineFromStream(fin, "FileParse_String2D");
+    ValidateInputStream(fin, "FileParse_String2D(std::ifstream&)");
+    string line = GetLineFromStream(fin, "FileParse_String2D(std::ifstream&)");
 
     if (line[0] == '[')
         line.erase(line.begin());
@@ -286,8 +286,8 @@ vector<vector<string>> FileParse_String2D(ifstream& fin) {
 */
 vector<char> FileParse_Char1D(ifstream& fin) {
 
-    ValidateInputStream(fin, "FileParse_Char1D");
-    string line = GetLineFromStream(fin, "FileParse_Char1D");
+    ValidateInputStream(fin, "FileParse_Char1D(std::ifstream&)");
+    string line = GetLineFromStream(fin, "FileParse_Char1D(std::ifstream&)");
 
     // Erase any leading/trailing brackets that ideally should be there
     if (line[0] == '[')
@@ -340,8 +340,8 @@ vector<char> FileParse_Char1D(ifstream& fin) {
 */
 vector<vector<char>> FileParse_Char2D(ifstream& fin) {
 
-    ValidateInputStream(fin, "FileParse_Char2D");
-    string line = GetLineFromStream(fin, "FileParse_Char2D");
+    ValidateInputStream(fin, "FileParse_Char2D(std::ifstream&)");
+    string line = GetLineFromStream(fin, "FileParse_Char2D(std::ifstream&)");
 
     // Erase any leading/trailing brackets that should be 
     if (line[0] == '[')
