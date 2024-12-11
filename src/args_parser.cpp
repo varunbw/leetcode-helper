@@ -9,6 +9,27 @@ using std::getline;
 using std::stoi;
 
 
+void ValidateArguments(const int argc, const int offset, string functionName) {
+
+    if (argc <= 1) {
+        throw std::invalid_argument(
+            RED_START +
+            string("[ERROR] ") + functionName + ": (const int, char**, const int): No input parameters passed" +
+            RESET_COLOR
+        );
+    }
+    if (offset + 1 >= argc) {
+        throw std::invalid_argument(
+            RED_START +
+            string("[ERROR] ") + functionName + ": (const int, char**, const int): Offset greater than num of parameters passed" +
+            RESET_COLOR
+        );
+    }
+
+    return;
+}
+
+
 // -- Input Parsing
 /*
     @brief Parse inputs as ints from the command line, and put them in a vector<int>
@@ -22,14 +43,7 @@ using std::stoi;
 */
 vector<int> ArgsParse_Int1D(const int argc, char** argv, const int offset) {
 
-    if (argc <= 1) {
-        cerr << "No input parameters\n\n";
-        exit(0);
-    }
-    if (offset + 1 >= argc) {
-        cerr << "Offset greater than num of parameters\n";
-        exit(0);
-    }
+    ValidateArguments(argc, offset, "ArgsParse_Int1D(const int, char**, const int)");
 
     vector<int> vec;
 
@@ -73,14 +87,8 @@ vector<int> ArgsParse_Int1D(const int argc, char** argv, const int offset) {
 */
 vector<vector<int>> ArgsParse_Int2D(const int argc, char** argv, const int offset) {
 
-    if (argc <= 1) {
-        cerr << "No input parameters\n\n";
-        exit(0);
-    }
-    if (offset + 1 >= argc) {
-        cerr << "Offset greater than num of parameters\n";
-        exit(0);
-    }
+    ValidateArguments(argc, offset, "ArgsParse_Int2D(const int, char**, const int)");
+
 
     // Set input
     string inp = argv[1 + offset];
@@ -134,14 +142,7 @@ vector<vector<int>> ArgsParse_Int2D(const int argc, char** argv, const int offse
 */
 vector<string> ArgsParse_String1D(const int argc, char** argv, const int offset) {
 
-    if (argc <= 1) {    
-        cerr << "No input parameters\n\n";
-        exit(0);
-    }
-    if (offset + 1 >= argc) {
-        cerr << "Offset greater than num of parameters\n";
-        exit(0);
-    }
+    ValidateArguments(argc, offset, "ArgsParse_String1D(const int, char**, const int)");
 
     vector<string> vec;
     string inp = argv[1 + offset];
