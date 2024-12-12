@@ -24,6 +24,8 @@ int main(int argc, char** argv) {
 
     ifstream fin("input.txt");
     ifstream finExpected("expected.txt");
+    ofstream fout("output.txt");
+    
     int t;
     fin >> t;
     while (fin.peek() == '\n')

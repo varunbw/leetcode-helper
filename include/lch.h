@@ -223,7 +223,7 @@ TreeNode* CreateBinaryTree(const std::vector<std::string>& nodes);
     @brief Prints a preorder traversal of the given tree
     @param root Node to start from
 */
-void PrintBinaryTree_Preorder(const TreeNode* root);
+void PrintBinaryTree_Preorder(const TreeNode* root, std::ostream& = cout);
 
 
 
@@ -258,14 +258,14 @@ GraphNode* CreateGraph(const std::vector<std::vector<int>>& edges);
     @brief Driver for performing a DFS on the given graph
     @param root Node to start the DFS from
 */
-void PrintGraph_DFS(const GraphNode* root);
+void PrintGraph_DFS(const GraphNode* root, std::ostream& = cout);
 
 /*
     @brief Actually performs the DFS
     @param node Node currently being visited
     @param visited Adjacency list
 */
-void PrintGraph_DFS(const GraphNode* node, std::set<const GraphNode*>& visited);
+void PrintGraph_DFS(const GraphNode* node, std::set<const GraphNode*>& visited, std::ostream& = cout);
 
 
 

@@ -55,9 +55,9 @@ GraphNode* CreateGraph(const vector<vector<int>>& edges) {
     @brief Driver for performing a DFS on the given graph
     @param root Node to start the DFS from
 */
-void PrintGraph_DFS(const GraphNode* root) {
+void PrintGraph_DFS(const GraphNode* root, std::ostream& stream) {
     set<const GraphNode*> visited;
-    PrintGraph_DFS(root, visited);
+    PrintGraph_DFS(root, visited, stream);
 }
 
 
@@ -66,7 +66,7 @@ void PrintGraph_DFS(const GraphNode* root) {
     @param node Node currently being visited
     @param visited Adjacency list
 */
-void PrintGraph_DFS(const GraphNode* node, set<const GraphNode*>& visited) {
+void PrintGraph_DFS(const GraphNode* node, set<const GraphNode*>& visited, std::ostream& stream) {
 
     if (node == nullptr || visited.count(node) == 1)
         return;
@@ -75,9 +75,9 @@ void PrintGraph_DFS(const GraphNode* node, set<const GraphNode*>& visited) {
     visited.insert(node);
 
     // Process the current node (e.g., print its value)
-    cout << node->val << " ";
+    stream << node->val << " ";
 
     // Recursively visit all the neighbours
     for (GraphNode* neighbour : node->neighbors) 
-        PrintGraph_DFS(neighbour, visited);
+        PrintGraph_DFS(neighbour, visited, stream);
 }

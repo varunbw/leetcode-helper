@@ -75,13 +75,13 @@ TreeNode* CreateBinaryTree(const vector<string>& nodes) {
     @brief Prints a preorder traversal of the given tree
     @param root Node to start from
 */
-void PrintBinaryTree_Preorder(const TreeNode* root) {
+void PrintBinaryTree_Preorder(const TreeNode* root, std::ostream& stream) {
     
     if (root == nullptr) return;
     
-    cout << root->val << "  ";
-    PrintBinaryTree_Preorder(root->left);
-    PrintBinaryTree_Preorder(root->right);
+    stream << root->val << "  ";
+    PrintBinaryTree_Preorder(root->left , stream);
+    PrintBinaryTree_Preorder(root->right, stream);
 
     return;
 }
