@@ -179,7 +179,7 @@ ListNode* CreateLinkedList(const std::vector<int>& nodes);
     @brief Does what it says, prints to std::cout
     @param head Node to start printing from
 */
-void PrintLinkedList(const ListNode* head);
+void PrintLinkedList(const ListNode* head, std::ostream& stream = cout);
 
 
 
@@ -223,7 +223,7 @@ TreeNode* CreateBinaryTree(const std::vector<std::string>& nodes);
     @brief Prints a preorder traversal of the given tree
     @param root Node to start from
 */
-void PrintBinaryTree_Preorder(const TreeNode* root, std::ostream& = cout);
+void PrintBinaryTree_Preorder(const TreeNode* root, std::ostream& stream = cout);
 
 
 
@@ -258,7 +258,7 @@ GraphNode* CreateGraph(const std::vector<std::vector<int>>& edges);
     @brief Driver for performing a DFS on the given graph
     @param root Node to start the DFS from
 */
-void PrintGraph_DFS(const GraphNode* root, std::ostream& = cout);
+void PrintGraph_DFS(const GraphNode* root, std::ostream& stream = cout);
 
 /*
     @brief Actually performs the DFS

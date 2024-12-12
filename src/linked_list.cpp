@@ -30,7 +30,7 @@ ListNode* CreateLinkedList(const vector<int>& nodes) {
     @brief Does what it says, prints to std::cout
     @param head Node to start printing from
 */
-void PrintLinkedList(const ListNode* head) {
+void PrintLinkedList(const ListNode* head, std::ostream& stream) {
     
     if (head->next == NULL) {
         cerr << "List is empty, nothing to display\n";
@@ -39,11 +39,11 @@ void PrintLinkedList(const ListNode* head) {
 
     const ListNode* curr = head;
     while (curr) {
-        cout << curr->val << "  ";
+        stream << curr->val << ", ";
         curr = curr->next;
     }
     
-    cout << endl;
+    stream << endl;
     return;
 }
 

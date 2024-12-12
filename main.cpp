@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     ifstream fin("input.txt");
     ifstream finExpected("expected.txt");
     ofstream fout("output.txt");
-    
+
     int t;
     fin >> t;
     while (fin.peek() == '\n')
@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
         // -- Linked List
         // vector<int> vec = FileParse_Int1D(fin);
         // ListNode* head = CreateLinkedList(vec);
-        // PrintLinkedList(head); cout << "\n";
+        // PrintLinkedList(head);
 
         // -- Binary Tree
         // vector<string> vec = FileParse_String1D(fin);
