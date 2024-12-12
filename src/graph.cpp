@@ -55,9 +55,9 @@ GraphNode* CreateGraph(const vector<vector<int>>& edges) {
     @brief Driver for performing a DFS on the given graph
     @param root Node to start the DFS from
 */
-void G_DFS(const GraphNode* root) {
+void PrintGraph_DFS(const GraphNode* root) {
     set<const GraphNode*> visited;
-    G_DFS(root, visited);
+    PrintGraph_DFS(root, visited);
 }
 
 
@@ -66,7 +66,7 @@ void G_DFS(const GraphNode* root) {
     @param node Node currently being visited
     @param visited Adjacency list
 */
-void G_DFS(const GraphNode* node, set<const GraphNode*>& visited) {
+void PrintGraph_DFS(const GraphNode* node, set<const GraphNode*>& visited) {
 
     if (node == nullptr || visited.count(node) == 1)
         return;
@@ -79,5 +79,5 @@ void G_DFS(const GraphNode* node, set<const GraphNode*>& visited) {
 
     // Recursively visit all the neighbours
     for (GraphNode* neighbour : node->neighbors) 
-        G_DFS(neighbour, visited);
+        PrintGraph_DFS(neighbour, visited);
 }

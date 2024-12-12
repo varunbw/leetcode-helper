@@ -30,7 +30,7 @@ ListNode* CreateLinkedList(const vector<int>& nodes) {
     @brief Does what it says, prints to std::cout
     @param head Node to start printing from
 */
-void DisplayLinkedList(const ListNode* head) {
+void PrintLinkedList(const ListNode* head) {
     
     if (head->next == NULL) {
         cerr << "List is empty, nothing to display\n";

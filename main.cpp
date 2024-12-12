@@ -57,17 +57,17 @@ int main(int argc, char** argv) {
         // -- Linked List
         // vector<int> vec = FileParse_Int1D(fin);
         // ListNode* head = CreateLinkedList(vec);
-        // DisplayLinkedList(head); cout << "\n";
+        // PrintLinkedList(head); cout << "\n";
 
         // -- Binary Tree
         // vector<string> vec = FileParse_String1D(fin);
         // TreeNode* root = CreateBinaryTree(vec);
-        // BT_PreorderTraversal(root);
+        // PrintBinaryTree_Preorder(root);
 
         // -- Graph
         // vector<vector<int>> grid = FileParse_Int2D(fin);
         // GraphNode* root = CreateGraph(grid);
-        // G_DFS(root);
+        // PrintGraph_DFS(root);
     }
 
     DeleteAllocatedNodes();

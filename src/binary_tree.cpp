@@ -75,13 +75,13 @@ TreeNode* CreateBinaryTree(const vector<string>& nodes) {
     @brief Prints a preorder traversal of the given tree
     @param root Node to start from
 */
-void BT_PreorderTraversal(const TreeNode* root) {
+void PrintBinaryTree_Preorder(const TreeNode* root) {
     
     if (root == nullptr) return;
     
     cout << root->val << "  ";
-    BT_PreorderTraversal(root->left);
-    BT_PreorderTraversal(root->right);
+    PrintBinaryTree_Preorder(root->left);
+    PrintBinaryTree_Preorder(root->right);
 
     return;
 }
