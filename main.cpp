@@ -34,11 +34,11 @@ int main(int argc, char** argv) {
     while (t--) {
         // -- 1D int
         // vector<int> vec = FileParse_Int1D(fin);
-        // Print1DVector(vec, fout);
+        // Print1DVector(vec);
 
         // -- 2D int
         // vector<vector<int>> grid = FileParse_Int2D(fin);
-        // Print2DVector(grid, fout);
+        // Print2DVector(grid);
 
         // -- 1D string
         // vector<string> vec = FileParse_String1D(fin);
