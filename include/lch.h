@@ -129,21 +129,21 @@ std::vector<std::string> ArgsParse_String1D(const int argc, char** argv, const i
 
 // -- Vector Printing
 template <typename T>
-void Print1DVector(std::vector<T> vec) {
+void Print1DVector(std::vector<T> vec, std::ostream& stream = cout) {
     for (auto ele : vec)
-        cout << ele << "  ";
-    cout << "\n";
+        stream << ele << "  ";
+    stream << "\n";
 
     return;
 }
 
 template <typename T>
-void Print2DVector(std::vector<std::vector<T>> vec) {
+void Print2DVector(std::vector<std::vector<T>> vec, std::ostream& stream = cout) {
     for (int i = 0; i < vec.size(); i++) {
         for (int j = 0; j < vec[i].size(); j++) {
-            cout << vec[i][j] << " ";
+            stream << vec[i][j] << " ";
         }
-        cout << "\n";
+        stream << "\n";
     }
     return;
 }
