@@ -1,5 +1,7 @@
-#ifndef LCH_LIBRARY_COLORS
-#define LCH_LIBRARY_COLORS
+#pragma once
+
+#ifndef LCH_TEXT_COLORS_HPP
+#define LCH_TEXT_COLORS_HPP
 
 // -- Escape sequences for printing colored text to console
 /*

@@ -13,5 +13,4 @@ using std::cin;
 using std::cerr;
 using std::endl;
 
-
 #endif

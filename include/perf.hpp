@@ -3,9 +3,6 @@
 #ifndef LCH_PERFORMANCE_HPP
 #define LCH_PERFORMANCE_HPP
 
-#include <iostream>
-#include <chrono>
-
 // -- Performance Counters
 typedef std::chrono::_V2::system_clock::time_point TimePoint;
 
@@ -44,6 +41,5 @@ std::string TimeElapsed(TimePoint start, TimePrecision precision = TimePrecision
     NOTE: If you want  to pass a division parameter, you also need to pass a TimePrecision parameter, you cant skip it
 */
 std::string TimeElapsed(TimePoint start, TimePoint end, TimePrecision precision = TimePrecision::MILLISECONDS, int division = 1);
-
 
 #endif

@@ -121,5 +121,4 @@ std::vector<std::vector<int>> ArgsParse_Int2D(const int argc, char** argv, const
 */
 std::vector<std::string> ArgsParse_String1D(const int argc, char** argv, const int offset);
 
-
 #endif

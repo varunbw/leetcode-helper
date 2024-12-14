@@ -3,7 +3,6 @@
 #ifndef LCH_MISC_HPP
 #define LCH_MISC_HPP
 
-
 // -- Vector Printing
 template <typename T>
 void Print1DVector(std::vector<T> vec, std::ostream& stream = cout) {
@@ -57,7 +56,5 @@ void Print2DVector(std::vector<std::vector<T>> vec, std::ostream& stream = cout)
     - inline std::vector<GraphNode*> allocatedGraphNodes;
 */
 void DeleteAllocatedNodes();
-
-
 
 #endif

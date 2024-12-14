@@ -3,16 +3,6 @@
 #ifndef LCH_DATA_STRUCTURES_HPP
 #define LCH_DATA_STRUCTURES_HPP
 
-#include <iostream>
-#include <vector>
-#include <string>
-#include <set>
-
-using std::cout;
-using std::cin;
-using std::cerr;
-using std::endl;
-
 // -- Linked List
 struct ListNode {
     int val;
@@ -129,6 +119,5 @@ void PrintGraph_DFS(const GraphNode* root, std::ostream& stream = cout);
     @param visited Adjacency list
 */
 void PrintGraph_DFS(const GraphNode* node, std::set<const GraphNode*>& visited, std::ostream& = cout);
-
 
 #endif
