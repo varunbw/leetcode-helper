@@ -6,7 +6,7 @@
 #include "misc.hpp"
 #include "parsers.hpp"
 #include "perf.hpp"
-#include "text_colors.h"
+#include "text_colors.hpp"
 
 using std::cout;
 using std::cin;
