@@ -9,7 +9,7 @@ using std::cout;
 
 // -- Vector Printing
 template <typename T>
-void Print1DVector(std::vector<T> vec, std::ostream& stream = cout) {
+void Print1DVector(const std::vector<T>& vec, std::ostream& stream = cout) {
 
     const int n = vec.size();
 
@@ -24,6 +24,12 @@ void Print1DVector(std::vector<T> vec, std::ostream& stream = cout) {
     stream << "]\n";
 
     return;
+}
+
+template <typename T>
+std::ostream& operator<<(std::ostream& stream, const std::vector<T>& vec) {
+    Print1DVector(vec, stream);
+    return stream;
 }
 
 template <typename T>
@@ -48,6 +54,12 @@ void Print2DVector(std::vector<std::vector<T>> vec, std::ostream& stream = cout)
     return;
 }
 
+template <typename T>
+std::ostream& operator<<(std::ostream& stream, const std::vector<std::vector<T>>& vec) {
+    Print2DVector(vec, stream);
+    return stream;
+}
+
 
 
 // -- Miscellaneous functions
@@ -61,6 +73,19 @@ void Print2DVector(std::vector<std::vector<T>> vec, std::ostream& stream = cout)
 void DeleteAllocatedNodes();
 
 
+/*
+    @brief Asserts results to their expected values
+    @param `value` Result of solution
+    @param `expected` Expected output
+    @param `stream` Custom stream to print to
+
+    Be sure to pass the same data types to `value` and `expected`
+
+    [WARNING]: As of now, it also outputs the value, and the expected result if the testcase fails.
+    This works on vectors due to the overloaded operator `<<`.
+    If you want it to work on other types that can't just be printed with `<<`, you'll need to
+    explicitly overload the operators and make them print how you want it.
+*/
 template <typename T>
 void AssertTestcase(T value, T expected, std::ostream& stream = cout) {
 
@@ -77,32 +102,10 @@ void AssertTestcase(T value, T expected, std::ostream& stream = cout) {
     }
 
     // Print the value
-    using std::is_same_v;
-    if constexpr (is_same_v<T, int> ||
-                  is_same_v<T, float> || is_same_v<T, double> ||
-                  is_same_v<T, std::string>) {
+    stream << value;
 
-        stream << value;
-
-        if (testcasePassed == false) {
-            stream << ", expected: " << expected;
-        }
-    }
-    else if constexpr (std::is_same_v<T, std::vector<typename T::value_type>>) {
-        Print1DVector(value, stream);
-
-        if (testcasePassed == false) {
-            stream << ", expected: ";
-            Print1DVector(expected);
-        }
-    }
-    else {
-        throw std::invalid_argument(
-            RED_START +
-            std::string("[ERROR] AssertTestcase(T, T): Given value of type T is not supported yet") +
-            RESET_COLOR
-        );
-    }
+    if (testcasePassed == false) 
+        stream << ", expected: " << expected;
 
     stream << '\n';
     return;
