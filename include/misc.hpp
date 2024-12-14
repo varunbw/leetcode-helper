@@ -5,11 +5,9 @@
 
 #include "text_colors.hpp"
 
-using std::cout;
-
 // -- Vector Printing
 template <typename T>
-void Print1DVector(const std::vector<T>& vec, std::ostream& stream = cout) {
+void Print1DVector(const std::vector<T>& vec, std::ostream& stream = std::cout) {
 
     const int n = vec.size();
 
@@ -33,7 +31,7 @@ std::ostream& operator<<(std::ostream& stream, const std::vector<T>& vec) {
 }
 
 template <typename T>
-void Print2DVector(std::vector<std::vector<T>> vec, std::ostream& stream = cout) {
+void Print2DVector(std::vector<std::vector<T>> vec, std::ostream& stream = std::cout) {
 
     const int rows = vec.size();
 
