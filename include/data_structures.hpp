@@ -3,6 +3,8 @@
 #ifndef LCH_DATA_STRUCTURES_HPP
 #define LCH_DATA_STRUCTURES_HPP
 
+using std::cout;
+
 // -- Linked List
 struct ListNode {
     int val;

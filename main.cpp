@@ -14,13 +14,6 @@ static const int fastIO = []() {
 class Solution {
 public:
 
-    int solve(vector<int>& nums) {
-        vector<int> res = {
-            8, 6, 2, 10, 36, 29, 44, 347
-        };
-        return res[rand() % res.size()];
-    }
-
 };
 
 
@@ -40,9 +33,8 @@ int main(int argc, char** argv) {
 
     while (t--) {
         // -- 1D int
-        vector<int> vec = FileParse_Int1D(fin);
+        // vector<int> vec = FileParse_Int1D(fin);
         // Print1DVector(vec);
-        cout << sol.solve(vec) << '\n';
 
         // -- 2D int
         // vector<vector<int>> grid = FileParse_Int2D(fin);
