@@ -6,6 +6,13 @@
 #include "text_colors.hpp"
 
 // -- Vector Printing
+/*
+    @brief Prints a `vector<T>`, given `T` is printable with the operator `<<`
+    @param `vec` Vector to print
+    @param `stream` Stream to print to, defaults to `cout` if not provided
+
+    [INFO]: Prints like this: `[1,2,3,4,5]`. A newline character is printed at the end.
+*/
 template <typename T>
 void Print1DVector(const std::vector<T>& vec, std::ostream& stream = std::cout) {
 
@@ -20,7 +27,6 @@ void Print1DVector(const std::vector<T>& vec, std::ostream& stream = std::cout) 
         stream << ", " << vec[i];
 
     stream << "]\n";
-
     return;
 }
 
@@ -30,6 +36,17 @@ std::ostream& operator<<(std::ostream& stream, const std::vector<T>& vec) {
     return stream;
 }
 
+/*
+    @brief Prints a `vector<vector<T>>`, given `T` is printable with the operator `<<`
+    @param `vec` Vector to print
+    @param `stream` Stream to print to, defaults to `cout` if not provided
+
+    [INFO]: Prints like this:
+    [
+        [1,2,3,4]
+        [5,6,7,8]
+    ] (check comment in source code for clearer representation)
+*/
 template <typename T>
 void Print2DVector(std::vector<std::vector<T>> vec, std::ostream& stream = std::cout) {
 
@@ -47,8 +64,8 @@ void Print2DVector(std::vector<std::vector<T>> vec, std::ostream& stream = std::
         
         stream << "]\n";
     }
-    stream << "]\n";
     
+    stream << "]\n";
     return;
 }
 
