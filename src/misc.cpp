@@ -1,4 +1,4 @@
-#include "../include/lch.h"
+#include "../include/lch.hpp"
 
 // -- Miscellaneous functions
 /*

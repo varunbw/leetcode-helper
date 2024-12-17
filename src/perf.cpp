@@ -1,4 +1,4 @@
-#include "../include/lch.h"
+#include "../include/lch.hpp"
 
 using std::string;
 using std::chrono::duration;

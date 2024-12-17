@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "../include/lch.h"
+#include "../include/lch.hpp"
 
 using std::vector;
 using std::string;
