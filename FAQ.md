@@ -7,35 +7,31 @@ Watch [this video](https://www.youtube.com/watch?v=a5kUr-u2UNo) to learn what li
 The code provided in `main.cpp` works in the standard competetive programming format.
 The code is parsed from a input file stream (`std::ifstream`), and considers the file `input.txt`. You can change the name of the file to suit your needs by accordingly changing it when it is initialized.
 
-The first line of the file should contain the number of testcases you want to run. Lines following it should contain the data to parse (each one on a new line).
+Put the data you want to parse, each on a separate line.
 Arrange the file parsing functions in whatever format you want each testcase to be parsed in.
 
 Ex: Consider you want to parse a `1D vector<int>`, and then, a `1D vector<string>`. You have **2** such test cases.
 
 The file `input.txt` should look like this:
 ```txt
-2
 [1,2,3,4,5]
 ["Hello","world"]
 [6,7,8,9,0]
 ["Testing","123"]
 ```
 
-The 1st line `2` states that there are 2 testcases.\
-The 2nd line `[1,2,3,4,5]` represents the `1D vector<int>` to be parsed.\
-The 3rd line `["Hello","world"]` represents the `1D vector<string>` to be parsed.\
-The 4th and 5th line contain the next test case.
+The 1st line `[1,2,3,4,5]` represents the `1D vector<int>` to be parsed.\
+The 2nd line `["Hello","world"]` represents the `1D vector<string>` to be parsed.\
+The 3rd and 4th line contain the next test case.
 
 The contents of your loop should look like this
 ```cpp
-while (t--) {
+while (fin.eof() == false) {
     vector<int> vec1    = FileParse_Int1D(fin);
     vector<string> vec2 = FileParse_String1D(fin);
     // Any other code...
 }
 ```
-
-This works because file streams work the same way as `cin` does.
 
 #### Passing data from the command line
 If you don't want to use files for some reason, you can provide command line arguments as well by using the `ArgsParse_` functions instead, that take stuff from the command line. Pass the parameters correctly, reference comments to figure out what they need.

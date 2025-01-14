@@ -26,12 +26,7 @@ int main(int argc, char** argv) {
     ifstream finExpected("expected.txt");
     ofstream fout("output.txt");
 
-    int t;
-    fin >> t;
-    while (fin.peek() == '\n')
-        fin.ignore();
-
-    while (t--) {
+    while (fin.eof() == false) {
         // -- 1D int
         // vector<int> vec = FileParse_Int1D(fin);
         // Print1DVector(vec);
@@ -40,6 +35,10 @@ int main(int argc, char** argv) {
         // vector<vector<int>> grid = FileParse_Int2D(fin);
         // Print2DVector(grid);
 
+        // -- String
+        // string s; fin >> s; s.erase(s.begin()); s.pop_back();
+        // cout << s << '\n';
+        
         // -- 1D string
         // vector<string> vec = FileParse_String1D(fin);
         // Print1DVector(vec);
