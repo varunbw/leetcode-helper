@@ -38,12 +38,19 @@ If you don't want to use files for some reason, you can provide command line arg
 
 #### Parsing data from cin instead of the file
 Simply pass `cin` as a parameter to the `FileParse_` functions instead.
+```cpp
+vector<int> vec = FileParse_Int1D(cin);
+```
+
+You can parse data from any `std::ifstream` object.
 
 ## How do I make data structures like trees, graphs, etc?
-Functions like `CreateLinkedList`, `CreateBinaryTree`, `CreateGraph`, etc. all expect their own format. Refer the comments to figure out what argument to pass, and what you as the return value.
+Functions like `CreateLinkedList()`, `CreateBinaryTree()`, `CreateGraph()`, etc. all expect their own format. Refer the comments to figure out what argument to pass, and what you as the return value.
+
+You likely won't need to use `CreateGraph()`, since usually in Leetcode, graphs are represented as a list of edges (`vector<vector<int>>`), instead of giving you dynamically allocated nodes. However, there exist exceptions like `Q 133. Clone Graph` where you are given a dynamically allocated graph.
 
 ## How do I know what a function does?
-~~Practice literacy~~ You can hover over a function in VS Code or other editors like it, and it'll show you the comment explaining what the function does. Alternatively, you can directly go to either the header file [lch.h](include/lch.h), or the functions respective source file in `src/`.
+~~Practice literacy~~ You can hover over a function in VS Code or other editors like it, and it'll show you the comment explaining what the function does. Alternatively, you can directly go to either the header file [lch.h](include/lch.h), or the functions respective source files in `src/`.
 
 ## What file is "output.txt" in .gitignore?
 You can send your output to a file instead of the console if you wish by adding this to `main.cpp`:
@@ -56,10 +63,12 @@ And then using `fout <<` instead of `cout <<`.
 That is where you can put your expected output, and parse it like you normally would parse your input, expect with its own file stream this time. `std::ifstream finExpected("")` is the one that points to the file.
 
 Lets say you want to compare the output that your function returns, to the expected output for a testcase. You can do it like this example:\
-expected.txt
+`expected.txt:`
 ```
 [1,2,3,4,5]  <--- Your expected output in the correct format
 ```
+
+You can then use `AssertTestcase()` and pass the value you received, and your expected value that you parsed from `expected.txt`
 
 main.cpp
 ```cpp
@@ -69,7 +78,10 @@ while (t--) {
     vector<int> res = sol.SolveProblem(vec); // Result of your solution
     vector<int> expected = FileParse_Int1D(finExpected) // Expected solution
 
-    // Compare the two down here
+    // Use given assert function
+    AssertTestcase(res, expected);
+
+    // Manual assertion
     cout << ((res == expected) ? "Passed\n" : "Failed\n") // Example
 
     // Any other code...
@@ -81,7 +93,7 @@ During parsing, if you are making a linked list, a binary tree, or a graph, we n
 - It is good practice.
 - Address Sanitizer will scream in your console everytime you run the program because you are leaking memory (by not freeing dynamically allocated memory).
 
-The funciton will free all nodes that are alloaced by the functions responsible for making the data structures. If you dynamically allocate outside of these functions, you'll need to keep track of them and free them separately.
+The funciton will free all nodes that are allocated by the functions responsible for making the data structures. If you dynamically allocate outside of these functions, you'll need to keep track of them and free them separately.
 
 ## What is the fastIO thingy at the start?
 
