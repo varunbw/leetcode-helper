@@ -9,7 +9,7 @@ using std::ifstream;
 using std::getline;
 
 using std::runtime_error;
-
+using std::invalid_argument;
 
 /*
     @brief Perform basic error checking on the input string
@@ -38,7 +38,7 @@ void ValidateInputStream(ifstream& fin, string callerFuncName) {
     if (fin.eof())
         throw runtime_error(
             RED_START +
-            string("[ERROR]: ") + callerFuncName + ": Input stream at EOF, check number of testcases again" +
+            string("[ERROR]: ") + callerFuncName + ": Input stream at EOF, check testcases again" +
             RESET_COLOR
         );
     
@@ -108,7 +108,7 @@ vector<int> FileParse_Int1D(ifstream& fin) {
         try {
             res.push_back(stoi(item));
         }
-        catch (runtime_error err) {
+        catch (invalid_argument err) {
             cout << RED_START <<
                 "[ERROR] FileParse_Int1D: Tried to convert '" << item << "' to int" <<
                 RESET_COLOR << '\n';
@@ -160,7 +160,7 @@ vector<vector<int>> FileParse_Int2D(ifstream& fin) {
             try {
                 row.push_back(stoi(itemInner));
             }
-            catch (runtime_error err) {
+            catch (invalid_argument err) {
                 cout << RED_START <<
                     "[ERROR] FileParse_Int2D: Tried to convert '" << itemInner << "' to int" <<
                     RESET_COLOR << '\n';
