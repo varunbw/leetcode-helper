@@ -6,6 +6,8 @@ The library *should* work on all platforms (Windows, Linux, Mac).
 
 Checkout the functions the library has to offer at src/. Comments are included to help understand what each function does.
 
+I also recommend going through the entirety of [FAQ.md](FAQ.md) first.
+
 # Installation
 
 1. Clone the repository
@@ -29,22 +31,22 @@ The final compiled library is not included in the repo. You can compile it by ru
 
 #### Linux
 ```bash
-./compileLib.sh
+./compile_lib.sh
 ```
 #### Windows
-```bash
-bash ./compileLib.sh
+```shell
+.\compile_lib.bat
 ```
 
-## Running the file
+## Running the main solution file
 You can directly use the `run.sh` script as follows
 #### Linux
 ```bash
 ./run.sh
 ```
 #### Windows
-```bash
-bash ./run.sh
+```shell
+.\run.bat
 ```
 #### Compile command
 The base command for compiling with g++ and linking the library correctly is as follows:
@@ -52,7 +54,7 @@ The base command for compiling with g++ and linking the library correctly is as 
 g++ main.cpp -Llib -llch
 ```
 
-The command used in `run.sh` is:
+The command used in the run files is:
 ```bash
 g++ -g main.cpp -o main -Llib -llch -std=c++17 -fsanitize=address
 ```

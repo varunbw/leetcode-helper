@@ -50,7 +50,8 @@ Functions like `CreateLinkedList()`, `CreateBinaryTree()`, `CreateGraph()`, etc.
 You likely won't need to use `CreateGraph()`, since usually in Leetcode, graphs are represented as a list of edges (`vector<vector<int>>`), instead of giving you dynamically allocated nodes. However, there exist exceptions like `Q 133. Clone Graph` where you are given a dynamically allocated graph.
 
 ## How do I know what a function does?
-~~Practice literacy~~ You can hover over a function in VS Code or other editors like it, and it'll show you the comment explaining what the function does. Alternatively, you can directly go to either the header file [lch.h](include/lch.h), or the functions respective source files in `src/`.
+~~Practice literacy~~ Each function has a detailed comment explaining what it does, either in the header file, or in the source file, but probably both.
+Editors like VS Code also show you the comment if you hover your cursor over the function for a second.
 
 ## What file is "output.txt" in .gitignore?
 You can send your output to a file instead of the console if you wish by adding this to `main.cpp`:
@@ -81,8 +82,8 @@ while (t--) {
     // Use given assert function
     AssertTestcase(res, expected);
 
-    // Manual assertion
-    cout << ((res == expected) ? "Passed\n" : "Failed\n") // Example
+    // Manual assertion example
+    cout << ((res == expected) ? "Passed\n" : "Failed\n")
 
     // Any other code...
 }
@@ -91,7 +92,7 @@ while (t--) {
 ## What does DeleteAllocatedNodes() do at the end of main.cpp?
 During parsing, if you are making a linked list, a binary tree, or a graph, we need to dynamically allocate memory. This memory needs to be freed for 2 reasons:
 - It is good practice.
-- Address Sanitizer will scream in your console everytime you run the program because you are leaking memory (by not freeing dynamically allocated memory).
+- Address Sanitizer will scream in your console everytime you run the program because you are leaking memory (by not freeing dynamically allocated memory) (only on Linux).
 
 The funciton will free all nodes that are allocated by the functions responsible for making the data structures. If you dynamically allocate outside of these functions, you'll need to keep track of them and free them separately.
 
