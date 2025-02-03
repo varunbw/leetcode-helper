@@ -10,13 +10,13 @@ I also recommend going through the entirety of [FAQ.md](FAQ.md) first.
 
 # Installation
 
-1. Clone the repository
+1. Clone the repository.
 
 ```bash
 git clone https://github.com/varunbw/leetcode-helper.git
 ```
 
-2. Include the library in your project by including the relevant header files.
+2. Include the header file in your solution file.
 
 ```cpp
 #include "lch.h"
@@ -27,27 +27,11 @@ git clone https://github.com/varunbw/leetcode-helper.git
 
 ## Compiling library
 
-The final compiled library is not included in the repo. You can compile it by running these commands when in the `lib/` directory in the console
-
-#### Linux
-```bash
-./compile_lib.sh
-```
-#### Windows
-```shell
-.\compile_lib.bat
-```
+The final compiled library is not included in the repo. You can compile it using the script/batch file provided in the `lib/` directory.
 
 ## Running the main solution file
-You can directly use the `run.sh` script as follows
-#### Linux
-```bash
-./run.sh
-```
-#### Windows
-```shell
-.\run.bat
-```
+You can directly use the `run.sh` or `run.bat` script
+
 #### Compile command
 The base command for compiling with g++ and linking the library correctly is as follows:
 ```bash
@@ -58,6 +42,8 @@ The command used in the run files is:
 ```bash
 g++ -g main.cpp -o main -Llib -llch -std=c++17 -fsanitize=address
 ```
+
+It's the same for the `clang` compiler. For MSVC, or anything else, you can just ask a LLM to translate it for you
 
 ## Refer [the FAQs](FAQ.md) for more help
 
