@@ -79,6 +79,8 @@ TreeNode* CreateBinaryTree(const std::vector<std::string>& nodes);
     @param root Node to start from
 */
 void PrintBinaryTree_Preorder(const TreeNode* root, std::ostream& stream = cout);
+void PrintBinaryTree_Inorder(const TreeNode* root, std::ostream& stream = cout);
+void PrintBinaryTree_Postorder(const TreeNode* root, std::ostream& stream = cout);
 
 
 

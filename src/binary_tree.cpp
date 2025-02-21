@@ -77,7 +77,8 @@ TreeNode* CreateBinaryTree(const vector<string>& nodes) {
 */
 void PrintBinaryTree_Preorder(const TreeNode* root, std::ostream& stream) {
     
-    if (root == nullptr) return;
+    if (root == nullptr)
+        return;
     
     stream << root->val << "  ";
     PrintBinaryTree_Preorder(root->left , stream);
@@ -86,65 +87,34 @@ void PrintBinaryTree_Preorder(const TreeNode* root, std::ostream& stream) {
     return;
 }
 
-
-
-// ! Not used
-// This is how a I thought a BT would be represented
-// However, LeetCode uses a different codec, that uses BFS
-// The above function works with the LC serialized format
-/*
-    Create a binary tree with the given vector
-    Follows the format
-        Left child pos  = (2 * node pos) + 1
-        Right child pos = (2 * node pos) + 2
-    
-    ex: [1, 2, 3, null, null, 4, 5]
-          1
-         / \
-        2   3
-           / \
-          4   5
-    
-    I/P: Vector of strings containing node values
-         "null" or "n" signifies no node at corresponding location
-    O/P: Pointer to root node
+/* 
+    @brief Prints an inorder traversal of the given tree
+    @param root Node to start from
 */
-/*
-TreeNode* CreateBinaryTree(vector<string>& inp) {
+void PrintBinaryTree_Inorder(const TreeNode* root, std::ostream& stream) {
+    
+    if (root == nullptr)
+        return;
+    
+    PrintBinaryTree_Inorder(root->left , stream);
+    stream << root->val << "  ";
+    PrintBinaryTree_Inorder(root->right, stream);
 
-    vector<TreeNode*> nodes;
-
-    const int inpSize = inp.size();
-    if (inpSize == 0) {
-        cerr << "Cannot make tree, vector empty";
-        exit(0);
-    }
-
-    // Push "null" values and normal values accordingly
-    for (int i = 0; i < inpSize; i++) {
-        if (inp[i] == "null" || inp[i] == "n") {
-            nodes.push_back(nullptr);
-            continue;
-        }
-
-        TreeNode* newNode = new TreeNode(stoi(inp[i]));
-
-        nodes.push_back(newNode);
-        allocatedTreeNodes.push_back(newNode);
-    }
-
-    // Link children
-    for (int i = 0; i < inpSize/2; i++) {
-
-        if (nodes[i] == nullptr) continue;
-
-        int left  = (2 * i) + 1;
-        int right = (2 * i) + 2;
-
-        if (left  < inpSize) nodes[i]->left  = nodes[left];
-        if (right < inpSize) nodes[i]->right = nodes[right];
-    }
-
-    return nodes[0];
+    return;
 }
+
+/* 
+    @brief Prints a postorder traversal of the given tree
+    @param root Node to start from
 */
+void PrintBinaryTree_Postorder(const TreeNode* root, std::ostream& stream) {
+    
+    if (root == nullptr)
+        return;
+    
+    PrintBinaryTree_Postorder(root->left , stream);
+    PrintBinaryTree_Postorder(root->right, stream);
+    stream << root->val << "  ";
+
+    return;
+}
