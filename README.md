@@ -28,6 +28,7 @@ git clone https://github.com/varunbw/leetcode-helper.git
 ## Compiling library
 
 The final compiled library is not included in the repo. You can compile it using the script/batch file provided in the `lib/` directory.
+I will be adding a CMake solution soon.
 
 ## Running the main solution file
 You can directly use the `run.sh` or `run.bat` script
