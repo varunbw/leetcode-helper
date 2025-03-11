@@ -118,3 +118,31 @@ void PrintBinaryTree_Postorder(const TreeNode* root, std::ostream& stream) {
 
     return;
 }
+
+/*
+    @brief Prints a level order traversal of the given tree
+    @param root Node to start from
+*/
+void PrintBinaryTree_LevelOrder(const TreeNode* root, std::ostream& stream) {
+    
+    if (root == nullptr)
+        return;
+    
+    queue<const TreeNode*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        const TreeNode* curr = q.front();
+        q.pop();
+        
+        stream << curr->val << "  ";
+        
+        if (curr->left != nullptr)
+            q.push(curr->left);
+        
+        if (curr->right != nullptr)
+            q.push(curr->right);
+    }
+
+    return;
+}
